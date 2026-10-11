@@ -611,7 +611,7 @@
   .price-feats .tick { color: var(--success); flex-shrink: 0; }
   .price-feats .cross { color: var(--danger); flex-shrink: 0; }
 
-  /* ============ Desarrollo constante ============ */
+  /* ============ Desarrollo constante (nueva versión) ============ */
   .dev-live {
     display: inline-flex;
     align-items: center;
@@ -626,6 +626,7 @@
     margin-bottom: clamp(16px, 2vh, 24px);
     font-family: var(--mono);
     letter-spacing: .04em;
+    align-self: flex-start;
   }
   .dev-live .live-dot {
     width: 8px; height: 8px;
@@ -641,66 +642,63 @@
     100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
   }
 
-  .dev-grid {
+  /* Pipeline visual */
+  .pipeline {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
-    gap: clamp(14px, 1.8vw, 22px);
-    margin-top: clamp(20px, 3vh, 40px);
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(12px, 1.6vw, 20px);
+    margin-top: clamp(24px, 3.5vh, 44px);
+    position: relative;
   }
-  .dev-card {
-    padding: clamp(20px, 2vw, 28px);
+  .pipe-step {
+    padding: clamp(18px, 2vw, 26px) clamp(16px, 1.6vw, 22px);
     background: var(--bg-2);
     border: 1px solid var(--border);
     border-radius: 16px;
     min-width: 0;
     position: relative;
-    overflow: hidden;
     transition: all .3s;
   }
-  .dev-card:hover {
+  .pipe-step:hover {
     border-color: rgba(124,92,252,.4);
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(124,92,252,.15);
   }
-  .dev-card::before {
+  .pipe-step::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 2px;
     background: linear-gradient(90deg, var(--primary), var(--accent));
-    opacity: .8;
+    border-radius: 16px 16px 0 0;
+    opacity: .9;
   }
-  .dev-tag {
-    display: inline-block;
+  .pipe-icon {
+    width: clamp(38px, 4.5vw, 48px);
+    height: clamp(38px, 4.5vw, 48px);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(124,92,252,.2), rgba(34,211,238,.15));
+    border: 1px solid rgba(124,92,252,.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(18px, 1.8vw, 22px);
+    margin-bottom: clamp(12px, 1.4vh, 16px);
+  }
+  .pipe-num {
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: clamp(10px, .3vw + 9px, 11px);
+    color: var(--primary-2);
     font-weight: 700;
     letter-spacing: .14em;
-    padding: 4px 9px;
-    border-radius: 999px;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     text-transform: uppercase;
   }
-  .dev-tag.now {
-    background: rgba(74,222,128,.12);
-    color: var(--success);
-    border: 1px solid rgba(74,222,128,.25);
-  }
-  .dev-tag.next {
-    background: rgba(34,211,238,.1);
-    color: var(--accent);
-    border: 1px solid rgba(34,211,238,.25);
-  }
-  .dev-tag.soon {
-    background: rgba(124,92,252,.12);
-    color: var(--primary-2);
-    border: 1px solid rgba(124,92,252,.25);
-  }
-  .dev-card h3 {
+  .pipe-step h3 {
     font-size: clamp(14px, .4vw + 12.5px, 17px);
     margin-bottom: 8px;
   }
-  .dev-card p {
+  .pipe-step p {
     font-size: clamp(11.5px, .3vw + 10.5px, 13px);
     line-height: 1.55;
     color: var(--fg-2);
@@ -715,7 +713,7 @@
     max-width: 900px;
   }
   .dev-quote p {
-    font-size: clamp(16px, 1.4vw + 12px, 24px);
+    font-size: clamp(16px, 1.4vw + 12px, 22px);
     line-height: 1.5;
     color: var(--fg);
     font-weight: 500;
@@ -894,6 +892,7 @@
     .gradient-chips { grid-template-columns: repeat(4, 1fr); }
     .slide-inner { justify-content: flex-start; padding-top: 10px; padding-bottom: 10px; }
     .final-slide .slide-inner { justify-content: center; padding-top: 0; padding-bottom: 0; }
+    .pipeline { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 500px) {
@@ -1267,57 +1266,44 @@
     <div class="slide-inner">
       <div class="dev-live">
         <span class="live-dot"></span>
-        DESARROLLO ACTIVO · NUEVAS FUNCIONES CADA SEMANA
+        EN MOVIMIENTO CONSTANTE · SIEMPRE MEJORANDO
       </div>
       <div class="eyebrow">Esto no se detiene</div>
       <h2>
-        Mientras lees esto,<br>
-        ya hay algo nuevo <span class="gradient-text">en el horno.</span>
+        Herramienta viva.<br>
+        <span class="gradient-text">Desarrollamos cada vez que respiras.</span>
       </h2>
       <p class="big" style="max-width: 800px;">
-        OpenCanvas Studio no es un producto congelado. Es una herramienta viva.
-        Cada vez que la usas, alguien está programando la siguiente mejora.
-        <span class="highlight">Desarrollamos cada vez que respiras.</span>
+        OpenCanvas Studio no está terminado. Y nunca lo estará, porque cada persona que la usa
+        descubre algo nuevo. Y cuando algo falta, entra directo a nuestro radar de mejoras.
       </p>
 
-      <div class="dev-grid">
-        <div class="dev-card">
-          <span class="dev-tag now">Disponible ahora</span>
-          <h3>Editor visual completo</h3>
-          <p>Mover, redimensionar, editar texto, degradados infinitos, menús anidados, animaciones, undo/redo y más. Todo lo que acabas de ver.</p>
+      <div class="pipeline">
+        <div class="pipe-step">
+          <div class="pipe-icon">💡</div>
+          <div class="pipe-num">Paso 01</div>
+          <h3>Tú detectas algo</h3>
+          <p>Un botón que falta, un menú que se ve raro, una función que no existe, un error, una idea. Cualquier cosa.</p>
         </div>
-        <div class="dev-card">
-          <span class="dev-tag next">En desarrollo</span>
-          <h3>Subida de imágenes</h3>
-          <p>Arrastra una imagen a la página y se sube al repo automáticamente. Sin tocar Git, sin subir manualmente, sin pensar en rutas.</p>
+        <div class="pipe-step">
+          <div class="pipe-icon">📡</div>
+          <div class="pipe-num">Paso 02</div>
+          <h3>Entra a nuestro radar</h3>
+          <p>Lo anotamos. Sin filtros, sin burocracia. Tu sugerencia, tu error o tu idea ya está en el pipeline de mejoras.</p>
         </div>
-        <div class="dev-card">
-          <span class="dev-tag next">En desarrollo</span>
-          <h3>Biblioteca de componentes</h3>
-          <p>Botones, tarjetas, formularios, secciones completas. Los arrastras a tu web y los personalizas sin escribir nada.</p>
-        </div>
-        <div class="dev-card">
-          <span class="dev-tag soon">Próximamente</span>
-          <h3>Modo colaborativo</h3>
-          <p>Invita a alguien a editar contigo en tiempo real. Como Google Docs, pero para tu sitio en GitHub.</p>
-        </div>
-        <div class="dev-card">
-          <span class="dev-tag soon">Próximamente</span>
-          <h3>Plantillas premium</h3>
-          <p>Diseños ya hechos que puedes aplicar a tu sitio con un clic. Y todo editable, como cualquier otra página.</p>
-        </div>
-        <div class="dev-card">
-          <span class="dev-tag soon">Próximamente</span>
-          <h3>Historial visual</h3>
-          <p>Ve todas las versiones de tu sitio como snapshots. Vuelve a cualquiera con un clic. Sin usar Git.</p>
+        <div class="pipe-step">
+          <div class="pipe-icon">🚀</div>
+          <div class="pipe-num">Paso 03</div>
+          <h3>Se lanza</h3>
+          <p>Lo desarrollamos y sale al aire. Y no al año. Al ritmo de una herramienta que nunca deja de moverse.</p>
         </div>
       </div>
 
       <div class="dev-quote">
         <p>
-          "Cada cambio que pides, cada idea que compartes, cada error que encuentras,
-          entra directamente al roadmap. No hay tickets sin leer. No hay sugerencias sin revisar.
-          Es la diferencia entre un producto y un proyecto vivo."
+          "OpenCanvas Studio no es un producto. Es una conversación. Cada función que existe hoy
+          nació de alguien que dijo <em>«esto falta»</em> o <em>«esto se rompió»</em>.
+          Seguimos moviéndonos porque ustedes siguen pidiendo."
           <span class="attribution">— El equipo de OpenCanvas Studio, hoy y mañana</span>
         </p>
       </div>
