@@ -3,35 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>OpenCanvas Studio — Presentación</title>
+<title>OpenCanvas Studio — Overview técnico</title>
 <style>
   :root {
-    --bg: #08080d;
-    --bg-2: #0f1018;
-    --fg: #f5f6fb;
-    --fg-2: #b8bccd;
-    --fg-3: #6a7088;
+    --bg: #0b0c10;
+    --bg-2: #14161c;
+    --fg: #f2f3f7;
+    --fg-2: #a8adb8;
+    --fg-3: #6b7280;
     --primary: #7c5cfc;
     --primary-2: #a58cff;
     --accent: #22d3ee;
-    --pink: #ff5fa2;
-    --danger: #ff6b6b;
     --success: #4ade80;
-    --warning: #fbbf24;
-    --border: rgba(255,255,255,.08);
-    --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-    --mono: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
+    --danger: #f87171;
+    --border: rgba(255,255,255,.09);
+    --border-2: rgba(255,255,255,.14);
+    --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-    --h1-size: clamp(26px, 6vw + .8rem, 92px);
-    --h2-size: clamp(22px, 3.8vw + .5rem, 52px);
-    --body-size: clamp(13.5px, .35vw + 12px, 18px);
-    --big-size: clamp(15px, .7vw + 12.5px, 22px);
-    --huge-size: clamp(18px, 1.4vw + 13px, 30px);
-    --pad-y: clamp(16px, 3.5vh, 56px);
-    --pad-x: clamp(14px, 3.5vw, 72px);
-    --gap-sm: clamp(10px, 1.2vw, 16px);
-    --gap-md: clamp(14px, 1.8vw, 24px);
-    --gap-lg: clamp(18px, 2.4vw, 36px);
+    --h1: clamp(26px, 4.5vw + .8rem, 64px);
+    --h2: clamp(22px, 3vw + .5rem, 44px);
+    --h3: clamp(14px, .5vw + 12px, 17px);
+    --body: clamp(13.5px, .35vw + 12px, 16px);
+    --small: clamp(11.5px, .3vw + 10.5px, 13px);
+    --pad-y: clamp(20px, 4vh, 56px);
+    --pad-x: clamp(16px, 4vw, 72px);
+    --gap: clamp(12px, 1.6vw, 20px);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; min-width: 0; }
@@ -44,32 +41,29 @@
   body {
     color: var(--fg);
     font-family: var(--font);
+    font-size: var(--body);
+    line-height: 1.55;
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    font-size: var(--body-size);
-    line-height: 1.5;
   }
 
+  /* ========== Deck ========== */
   .deck { position: fixed; inset: 0; overflow: hidden; }
 
-  /* ========== Slides: alineación segura ========== */
   .slide {
     position: absolute;
     inset: 0;
     display: flex;
-    align-items: flex-start; /* cambiar de center: evita cortar contenido arriba */
+    align-items: flex-start;
     justify-content: center;
     padding: var(--pad-y) var(--pad-x);
     opacity: 0;
-    transform: scale(.97);
-    transition: opacity .45s cubic-bezier(.4,0,.2,1),
-                transform .45s cubic-bezier(.4,0,.2,1);
+    transform: scale(.98);
+    transition: opacity .35s ease, transform .35s ease;
     pointer-events: none;
     overflow-y: auto;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: rgba(124,92,252,.5) transparent;
+    scrollbar-color: rgba(124,92,252,.4) transparent;
   }
   .slide::-webkit-scrollbar { width: 6px; }
   .slide::-webkit-scrollbar-thumb {
@@ -82,33 +76,26 @@
     pointer-events: auto;
     z-index: 2;
   }
-  .slide.prev { transform: scale(1.03); }
 
-  /* margin:auto centra cuando hay espacio, y permite scroll si no lo hay */
   .slide-inner {
     width: 100%;
-    max-width: min(1200px, 100%);
+    max-width: min(1080px, 100%);
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: min-content;
-    gap: 0;
   }
 
+  /* ========== Chrome ========== */
   .progress {
     position: fixed;
     top: 0; left: 0; right: 0;
     height: 2px;
-    background: rgba(255,255,255,.06);
+    background: rgba(255,255,255,.05);
     z-index: 100;
   }
   .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
     width: 0%;
-    transition: width .5s cubic-bezier(.4,0,.2,1);
-    box-shadow: 0 0 12px rgba(124,92,252,.5);
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width .35s ease;
   }
 
   .nav {
@@ -120,940 +107,480 @@
     z-index: 100;
   }
   .nav-btn {
-    width: clamp(34px, 4.5vw, 44px);
-    height: clamp(34px, 4.5vw, 44px);
+    width: 40px; height: 40px;
     border-radius: 50%;
-    background: rgba(15,16,24,.75);
+    background: rgba(20,22,28,.85);
     border: 1px solid var(--border);
     color: var(--fg);
-    font-size: clamp(14px, 1.4vw, 16px);
+    font-size: 15px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: all .2s;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
   }
   .nav-btn:hover:not(:disabled) {
-    background: rgba(124,92,252,.25);
+    background: rgba(124,92,252,.2);
     border-color: var(--primary);
-    transform: scale(1.05);
   }
   .nav-btn:disabled { opacity: .3; cursor: not-allowed; }
 
-  .slide-counter {
+  .counter {
     position: fixed;
     bottom: max(20px, env(safe-area-inset-bottom));
     left: max(14px, env(safe-area-inset-left));
     font-family: var(--mono);
     font-size: 11px;
     color: var(--fg-3);
-    letter-spacing: .05em;
-    z-index: 100;
-    background: rgba(15,16,24,.6);
+    background: rgba(20,22,28,.7);
     padding: 4px 8px;
     border-radius: 6px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    z-index: 100;
+    letter-spacing: .05em;
   }
-  .slide-counter .current { color: var(--primary-2); font-weight: 600; }
+  .counter .current { color: var(--primary-2); font-weight: 600; }
 
-  .brand-corner {
+  .brand {
     position: fixed;
     top: max(14px, env(safe-area-inset-top));
     left: max(14px, env(safe-area-inset-left));
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 11px;
-    font-weight: 600;
+    font-size: 12px;
     color: var(--fg-2);
+    font-weight: 600;
     z-index: 100;
-    opacity: .7;
-    letter-spacing: .02em;
+    opacity: .75;
   }
-  .brand-corner .dot {
+  .brand .mark {
     width: 20px; height: 20px;
     border-radius: 5px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 10px;
     color: #fff;
+    font-size: 10px;
   }
 
   /* ========== Typography ========== */
   .eyebrow {
-    font-size: clamp(10px, .3vw + 9px, 12px);
+    font-size: 11px;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: .18em;
+    letter-spacing: .16em;
     color: var(--primary-2);
-    margin-bottom: clamp(8px, 1.4vh, 18px);
+    margin-bottom: 12px;
   }
   h1 {
-    font-size: var(--h1-size);
+    font-size: var(--h1);
     font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -.03em;
-    margin-bottom: clamp(12px, 1.8vh, 22px);
+    line-height: 1.08;
+    letter-spacing: -.025em;
+    margin-bottom: 16px;
     overflow-wrap: break-word;
-    word-break: break-word;
   }
   h2 {
-    font-size: var(--h2-size);
+    font-size: var(--h2);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.15;
     letter-spacing: -.02em;
-    margin-bottom: clamp(12px, 1.8vh, 26px);
+    margin-bottom: 20px;
     overflow-wrap: break-word;
-    word-break: break-word;
   }
   h3 {
-    font-size: clamp(13.5px, .45vw + 12px, 19px);
+    font-size: var(--h3);
     font-weight: 600;
     line-height: 1.3;
-    margin-bottom: 8px;
-    overflow-wrap: break-word;
+    margin-bottom: 6px;
   }
   p {
-    font-size: var(--body-size);
-    line-height: 1.6;
     color: var(--fg-2);
     max-width: 720px;
     overflow-wrap: break-word;
   }
-  .big { font-size: var(--big-size); line-height: 1.5; }
-  .huge {
-    font-size: var(--huge-size);
-    line-height: 1.35;
-    font-weight: 500;
-    color: var(--fg);
-    overflow-wrap: break-word;
-  }
-
-  .gradient-text {
-    background: linear-gradient(135deg, var(--primary), var(--accent) 60%, var(--pink));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-  .highlight { color: var(--fg); font-weight: 600; }
+  .lead { font-size: clamp(15px, .8vw + 12.5px, 20px); line-height: 1.55; color: var(--fg-2); }
+  .mono { font-family: var(--mono); font-size: .92em; }
+  .accent { color: var(--primary-2); }
+  .cyan { color: var(--accent); }
+  .green { color: var(--success); }
+  .red { color: var(--danger); }
   .muted { color: var(--fg-3); }
-
-  /* ========== Portada ========== */
-  .title-slide { text-align: left; }
-  .title-slide h1 {
-    font-size: clamp(28px, 5vw + 1rem, 96px);
-    margin-bottom: clamp(16px, 2.2vh, 30px);
-    line-height: 1.05;
-  }
-  .title-slide .sub {
-    font-size: clamp(14.5px, 1vw + 11px, 22px);
-    color: var(--fg-2);
-    max-width: 640px;
-    line-height: 1.5;
-    margin-bottom: clamp(18px, 2.5vh, 36px);
-  }
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: clamp(6px, .9vh, 8px) clamp(11px, 1.2vw, 15px);
-    background: rgba(124,92,252,.1);
-    border: 1px solid rgba(124,92,252,.3);
-    border-radius: 999px;
-    font-size: clamp(10.5px, .3vw + 10px, 13px);
-    color: var(--primary-2);
-    font-weight: 500;
-    margin-bottom: clamp(12px, 1.8vh, 26px);
-    max-width: 100%;
-    overflow-wrap: break-word;
-  }
-  .pill .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--primary-2);
-    animation: pulse 2s infinite;
-    flex-shrink: 0;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: .5; transform: scale(.8); }
+  code {
+    font-family: var(--mono);
+    font-size: .88em;
+    background: rgba(255,255,255,.06);
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--fg);
   }
 
-  /* ========== Pain list ========== */
-  .pain-list {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(7px, 1.1vh, 13px);
-    margin-top: clamp(16px, 2.4vh, 34px);
-    max-width: 900px;
-  }
-  .pain-item {
-    display: flex;
-    align-items: flex-start;
-    gap: clamp(10px, 1vw, 14px);
-    padding: clamp(10px, 1.4vh, 16px) clamp(12px, 1.4vw, 20px);
-    background: rgba(255,107,107,.04);
-    border-left: 3px solid var(--danger);
-    border-radius: 8px;
-    font-size: clamp(12.5px, .3vw + 11px, 15.5px);
-    color: var(--fg-2);
-    line-height: 1.5;
-    overflow-wrap: break-word;
-  }
-  .pain-item .ico {
-    flex-shrink: 0;
-    color: var(--danger);
-    font-size: 15px;
-    margin-top: 1px;
-  }
-
-  /* ========== Compare ========== */
-  .compare {
+  /* ========== Utilidades ========== */
+  .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: var(--gap-lg);
-    margin-top: clamp(16px, 2.4vh, 34px);
+    gap: var(--gap);
+    margin-top: 28px;
   }
-  .compare-card {
-    padding: clamp(16px, 1.8vw, 26px);
-    border-radius: 16px;
+  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
+
+  .card {
+    padding: clamp(16px, 1.8vw, 22px);
     background: var(--bg-2);
     border: 1px solid var(--border);
+    border-radius: 12px;
     min-width: 0;
   }
-  .compare-card.bad { border-color: rgba(255,107,107,.2); }
-  .compare-card.good {
-    border-color: rgba(124,92,252,.4);
-    background: linear-gradient(180deg, rgba(124,92,252,.06), transparent);
-    box-shadow: 0 0 60px rgba(124,92,252,.15);
-  }
-  .compare-head {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: clamp(10.5px, .3vw + 10px, 13px);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    margin-bottom: clamp(10px, 1.4vh, 18px);
-    flex-wrap: wrap;
-  }
-  .compare-card.bad .compare-head { color: var(--danger); }
-  .compare-card.good .compare-head { color: var(--primary-2); }
-  .compare-list {
+
+  .list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: clamp(6px, 1vh, 11px);
+    gap: 10px;
   }
-  .compare-list li {
+  .list li {
     display: flex;
     gap: 10px;
-    font-size: clamp(12px, .3vw + 10.5px, 14px);
-    line-height: 1.5;
+    align-items: flex-start;
+    font-size: var(--small);
     color: var(--fg-2);
-    overflow-wrap: break-word;
+    line-height: 1.5;
   }
-  .compare-list li::before {
-    content: '·';
-    color: var(--fg-3);
-    font-weight: 700;
+  .list li::before {
+    content: '→';
+    color: var(--primary-2);
     flex-shrink: 0;
+    font-family: var(--mono);
   }
-  .compare-card.good .compare-list li { color: var(--fg); }
-  .compare-card.good .compare-list li::before { color: var(--primary-2); }
 
-  /* ========== Steps ========== */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
-    gap: var(--gap-md);
-    margin-top: clamp(20px, 3vh, 44px);
+  /* ========== Portada ========== */
+  .cover .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--primary-2);
+    background: rgba(124,92,252,.1);
+    border: 1px solid rgba(124,92,252,.25);
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 20px;
   }
-  .step {
-    padding: clamp(16px, 1.8vw, 26px);
-    border-radius: 16px;
+  .cover h1 { max-width: 900px; }
+  .cover .lead { max-width: 640px; margin-bottom: 24px; }
+
+  .def {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: var(--bg-2);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    max-width: 720px;
+  }
+  .def p { color: var(--fg); font-size: var(--body); }
+  .def strong { color: var(--primary-2); }
+
+  /* ========== Flujo ========== */
+  .flow {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: var(--gap);
+    margin-top: 28px;
+    position: relative;
+  }
+  .flow-step {
+    padding: 20px;
     background: var(--bg-2);
     border: 1px solid var(--border);
+    border-radius: 12px;
     min-width: 0;
+    position: relative;
   }
-  .step .num {
+  .flow-num {
     font-family: var(--mono);
-    font-size: clamp(10.5px, .3vw + 10px, 13px);
+    font-size: 11px;
     color: var(--primary-2);
     font-weight: 600;
-    margin-bottom: clamp(8px, 1vh, 14px);
-    letter-spacing: .1em;
+    letter-spacing: .08em;
+    margin-bottom: 10px;
   }
-  .step h3 { color: var(--fg); }
-  .step p { font-size: clamp(12px, .3vw + 11px, 14px); }
+  .flow-step h3 { font-size: 15px; margin-bottom: 8px; }
+  .flow-step p { font-size: var(--small); }
 
-  /* ========== Features ========== */
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
-    gap: var(--gap-sm);
-    margin-top: clamp(16px, 2.4vh, 34px);
+  /* ========== Code block ========== */
+  .codeblock {
+    background: #0a0b0e;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    font-family: var(--mono);
+    font-size: clamp(11.5px, .35vw + 10.5px, 13.5px);
+    line-height: 1.7;
+    color: var(--fg-2);
+    overflow-x: auto;
+    margin-top: 24px;
+    white-space: pre;
   }
-  .feature {
-    padding: clamp(14px, 1.6vw, 22px);
+  .codeblock .c { color: var(--fg-3); font-style: italic; }
+  .codeblock .k { color: var(--primary-2); }
+  .codeblock .s { color: #f0c674; }
+  .codeblock .ok { color: var(--success); }
+
+  /* ========== Feature list ========== */
+  .feat {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+    gap: 12px;
+    margin-top: 28px;
+  }
+  .feat-item {
+    padding: 14px 16px;
     background: var(--bg-2);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    transition: all .3s;
+    border-radius: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
     min-width: 0;
   }
-  .feature:hover {
-    border-color: rgba(124,92,252,.4);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(124,92,252,.15);
-  }
-  .feature .ico {
-    width: clamp(32px, 3.5vw, 42px);
-    height: clamp(32px, 3.5vw, 42px);
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(124,92,252,.2), rgba(34,211,238,.15));
+  .feat-item .icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(124,92,252,.12);
+    border: 1px solid rgba(124,92,252,.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(15px, 1.5vw, 20px);
-    margin-bottom: clamp(8px, 1vh, 14px);
-    border: 1px solid rgba(124,92,252,.2);
+    font-size: 15px;
+    flex-shrink: 0;
   }
-  .feature h3 { font-size: clamp(12.5px, .4vw + 11.5px, 15px); margin-bottom: 6px; }
-  .feature p { font-size: clamp(11px, .3vw + 10.5px, 13px); line-height: 1.5; }
+  .feat-item .body { min-width: 0; }
+  .feat-item h3 { font-size: 13.5px; margin-bottom: 3px; }
+  .feat-item p { font-size: 12px; line-height: 1.5; }
 
-  /* ========== Gradient demo ========== */
-  .gradient-demo {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-    gap: var(--gap-lg);
-    align-items: center;
-    margin-top: clamp(16px, 2.4vh, 34px);
-  }
-  .gradient-title {
-    font-size: clamp(30px, 4.5vw + 1rem, 88px);
-    font-weight: 900;
-    line-height: .95;
-    letter-spacing: -.04em;
-    margin-bottom: clamp(12px, 1.6vh, 22px);
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  .rainbow-text {
-    background: linear-gradient(90deg,
-      #ff0000 0%, #ff8800 15%, #ffee00 30%,
-      #00cc44 45%, #0088ff 62%, #8800ff 78%, #ff00aa 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-  .sunset-text {
-    background: linear-gradient(135deg, #ff6b6b, #ffa94d, #ffd93d, #c77dff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-  }
-  .gradient-chips {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(60px, 100%), 1fr));
-    gap: clamp(6px, .9vw, 12px);
-    margin-top: clamp(12px, 1.6vh, 20px);
-  }
-  .gchip {
-    aspect-ratio: 2 / 1;
-    min-height: 26px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-  }
-  .gchip.rainbow { background: linear-gradient(90deg,#f00,#f80,#fe0,#0c4,#08f,#80f,#f0a); }
-  .gchip.sunset { background: linear-gradient(135deg,#ff6b6b,#ffa94d,#ffd93d,#c77dff); }
-  .gchip.ocean { background: linear-gradient(135deg,#0066ff,#00c2ff,#00ffd1); }
-  .gchip.fire { background: linear-gradient(135deg,#f00,#f60,#fc0); }
-  .gchip.pastel { background: linear-gradient(135deg,#ffb3ba,#ffdfba,#ffffba,#baffc9,#bae1ff); }
-  .gchip.neon { background: linear-gradient(135deg,#ff00e5,#00fff0,#aaff00); }
-  .gchip.aurora { background: linear-gradient(135deg,#00ffa3,#22d3ee,#7c5cfc); }
-  .gchip.forest { background: linear-gradient(135deg,#0a3d2a,#1f8a4c,#8ce99a); }
-  .gchip.galaxy { background: linear-gradient(135deg,#1a0033,#4d0099,#c77dff); }
-  .gchip.mono { background: linear-gradient(135deg,#000,#666,#fff); }
-
-  /* ========== Before/After ========== */
-  .ba {
+  /* ========== Comparación técnica ========== */
+  .cmp {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: var(--gap-md);
-    margin-top: clamp(16px, 2.4vh, 34px);
+    gap: var(--gap);
+    margin-top: 28px;
   }
-  .ba-col {
-    border-radius: 14px;
-    overflow: hidden;
+  .cmp-col {
+    padding: 20px;
+    background: var(--bg-2);
     border: 1px solid var(--border);
+    border-radius: 12px;
     min-width: 0;
-    display: flex;
-    flex-direction: column;
   }
-  .ba-label {
-    padding: clamp(8px, 1vh, 10px) clamp(12px, 1.2vw, 16px);
-    background: rgba(255,255,255,.03);
-    font-size: clamp(10px, .3vw + 9px, 11px);
+  .cmp-col.alt { border-color: rgba(248,113,113,.2); }
+  .cmp-col.ours {
+    border-color: rgba(124,92,252,.4);
+    background: linear-gradient(180deg, rgba(124,92,252,.06), transparent);
+  }
+  .cmp-head {
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: .15em;
-    border-bottom: 1px solid var(--border);
-    line-height: 1.4;
-  }
-  .ba-col.bad .ba-label { color: var(--danger); }
-  .ba-col.good .ba-label { color: var(--success); }
-  .ba-body {
-    padding: clamp(12px, 1.4vw, 20px);
-    background: var(--bg-2);
-    font-family: var(--mono);
-    font-size: clamp(10.5px, .3vw + 9.5px, 12.5px);
-    line-height: 1.65;
-    color: var(--fg-2);
-    flex: 1;
-    overflow-x: auto;
-    word-break: break-word;
-  }
-  .ba-body .kw { color: var(--primary-2); }
-  .ba-body .str { color: #f0c674; }
-  .ba-body .cmt { color: var(--fg-3); font-style: italic; }
-  .ba-body .ok { color: var(--success); }
-  .ba-body .no { color: var(--danger); }
-
-  /* ========== Audience ========== */
-  .audience {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
-    gap: var(--gap-sm);
-    margin-top: clamp(16px, 2.4vh, 34px);
-  }
-  .aud-card {
-    padding: clamp(14px, 1.6vw, 24px);
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    text-align: center;
-    min-width: 0;
-  }
-  .aud-emoji {
-    font-size: clamp(26px, 2.8vw, 38px);
-    margin-bottom: clamp(6px, .9vh, 12px);
-    display: block;
-    line-height: 1;
-  }
-  .aud-card h3 { font-size: clamp(13px, .4vw + 12px, 16px); margin-bottom: 6px; }
-  .aud-card p { font-size: clamp(11px, .3vw + 10.5px, 13px); line-height: 1.5; }
-
-  /* ========== Precio ========== */
-  .price-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
-    gap: var(--gap-md);
-    margin-top: clamp(24px, 3.2vh, 44px);
-  }
-  .price-card {
-    padding: clamp(20px, 2vw, 30px) clamp(16px, 1.6vw, 24px) clamp(16px, 1.6vw, 22px);
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: clamp(8px, 1vh, 12px);
-    position: relative;
-    min-width: 0;
-  }
-  .price-card.winner {
-    border-color: rgba(124,92,252,.5);
-    background: linear-gradient(180deg, rgba(124,92,252,.08), transparent);
-    box-shadow: 0 20px 60px rgba(124,92,252,.2);
-  }
-  .price-card.winner::before {
-    content: 'MEJOR OPCIÓN';
-    position: absolute;
-    top: -10px;
-    left: clamp(12px, 1.4vw, 20px);
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: #fff;
-    font-size: 9px;
-    font-weight: 700;
     letter-spacing: .12em;
-    padding: 4px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
   }
-  .price-brand {
-    font-size: clamp(12px, .3vw + 11.5px, 14px);
-    font-weight: 700;
-    color: var(--fg-2);
-    letter-spacing: .02em;
-  }
-  .price-amount {
-    font-size: clamp(26px, 3.2vw, 40px);
-    font-weight: 800;
-    letter-spacing: -.03em;
-    line-height: 1;
-    color: var(--fg);
-    overflow-wrap: break-word;
-  }
-  .price-amount .per {
-    font-size: clamp(10.5px, .3vw + 10px, 13px);
-    color: var(--fg-3);
-    font-weight: 500;
-    letter-spacing: 0;
-  }
-  .price-card.winner .price-amount { color: var(--primary-2); }
-  .price-note {
-    font-size: clamp(11px, .3vw + 10.5px, 13px);
-    color: var(--fg-3);
-    line-height: 1.5;
-  }
-  .price-feats {
+  .cmp-col.alt .cmp-head { color: var(--danger); }
+  .cmp-col.ours .cmp-head { color: var(--primary-2); }
+  .cmp-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-top: 4px;
-    padding-top: clamp(8px, 1.1vh, 12px);
-    border-top: 1px solid var(--border);
+    gap: 10px;
   }
-  .price-feats li {
-    font-size: clamp(11px, .3vw + 10.5px, 13px);
-    color: var(--fg-2);
+  .cmp-list li {
     display: flex;
-    gap: 8px;
-    align-items: flex-start;
+    gap: 10px;
+    font-size: var(--small);
+    color: var(--fg-2);
     line-height: 1.5;
-    overflow-wrap: break-word;
+    align-items: flex-start;
   }
-  .price-feats .tick { color: var(--success); flex-shrink: 0; }
-  .price-feats .cross { color: var(--danger); flex-shrink: 0; }
+  .cmp-list .mark {
+    flex-shrink: 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    width: 14px;
+  }
+  .cmp-list .mark.no { color: var(--danger); }
+  .cmp-list .mark.yes { color: var(--success); }
+  .cmp-col.ours .cmp-list li { color: var(--fg); }
 
-  /* ========== Desarrollo constante ========== */
-  .dev-live {
+  /* ========== Stack técnico ========== */
+  .stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .stack-item {
+    padding: 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    min-width: 0;
+  }
+  .stack-item .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 6px;
+  }
+  .stack-item .value {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg);
+    font-weight: 500;
+  }
+
+  /* ========== Estado ========== */
+  .live-badge {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
-    padding: clamp(6px, .8vh, 8px) clamp(11px, 1.2vw, 16px);
+    gap: 8px;
+    padding: 6px 12px;
     background: rgba(74,222,128,.08);
     border: 1px solid rgba(74,222,128,.3);
     border-radius: 999px;
-    font-size: clamp(10px, .3vw + 9.5px, 12.5px);
-    color: var(--success);
-    font-weight: 500;
-    margin-bottom: clamp(12px, 1.6vh, 22px);
     font-family: var(--mono);
-    letter-spacing: .04em;
-    align-self: flex-start;
-    max-width: 100%;
-    overflow-wrap: break-word;
-    line-height: 1.3;
+    font-size: 11px;
+    color: var(--success);
+    margin-bottom: 16px;
   }
-  .dev-live .live-dot {
-    width: 7px; height: 7px;
+  .live-dot {
+    width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--success);
     box-shadow: 0 0 0 0 rgba(74,222,128,.7);
-    animation: livePulse 1.6s infinite;
+    animation: pulse 1.6s infinite;
     flex-shrink: 0;
   }
-  @keyframes livePulse {
+  @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(74,222,128,.7); }
     70% { box-shadow: 0 0 0 10px rgba(74,222,128,0); }
     100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
   }
 
-  /* Pipeline: se adapta automáticamente */
   .pipeline {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
-    gap: var(--gap-md);
-    margin-top: clamp(20px, 2.8vh, 40px);
-    position: relative;
+    gap: var(--gap);
+    margin-top: 24px;
   }
   .pipe-step {
-    padding: clamp(16px, 1.8vw, 24px) clamp(14px, 1.5vw, 22px);
+    padding: 18px;
     background: var(--bg-2);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    min-width: 0;
-    position: relative;
-    transition: all .3s;
-    display: flex;
-    flex-direction: column;
-  }
-  .pipe-step:hover {
-    border-color: rgba(124,92,252,.4);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(124,92,252,.15);
-  }
-  .pipe-step::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
-    border-radius: 16px 16px 0 0;
-    opacity: .9;
-  }
-  .pipe-icon {
-    width: clamp(34px, 4vw, 46px);
-    height: clamp(34px, 4vw, 46px);
     border-radius: 12px;
-    background: linear-gradient(135deg, rgba(124,92,252,.2), rgba(34,211,238,.15));
-    border: 1px solid rgba(124,92,252,.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(16px, 1.7vw, 22px);
-    margin-bottom: clamp(10px, 1.2vh, 14px);
-    line-height: 1;
+    min-width: 0;
   }
   .pipe-num {
     font-family: var(--mono);
-    font-size: clamp(9.5px, .3vw + 9px, 11px);
+    font-size: 10.5px;
     color: var(--primary-2);
-    font-weight: 700;
-    letter-spacing: .14em;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-  }
-  .pipe-step h3 {
-    font-size: clamp(13px, .4vw + 12px, 16px);
+    font-weight: 600;
+    letter-spacing: .1em;
     margin-bottom: 8px;
   }
-  .pipe-step p {
-    font-size: clamp(11px, .3vw + 10.5px, 13px);
-    line-height: 1.55;
-    color: var(--fg-2);
-    flex: 1;
-  }
+  .pipe-step h3 { font-size: 14px; margin-bottom: 6px; }
+  .pipe-step p { font-size: var(--small); }
 
-  .dev-quote {
-    margin-top: clamp(20px, 2.8vh, 40px);
-    padding: clamp(16px, 2vw, 28px) clamp(16px, 1.8vw, 26px);
-    border-left: 3px solid var(--primary);
-    background: linear-gradient(90deg, rgba(124,92,252,.08), transparent);
-    border-radius: 0 12px 12px 0;
-    max-width: 900px;
-  }
-  .dev-quote p {
-    font-size: clamp(14px, 1.2vw + 11px, 20px);
-    line-height: 1.5;
-    color: var(--fg);
-    font-weight: 500;
-    font-style: italic;
-    margin: 0;
-  }
-  .dev-quote .attribution {
-    display: block;
-    margin-top: 10px;
-    font-size: clamp(10.5px, .3vw + 10px, 12.5px);
-    color: var(--fg-3);
-    font-style: normal;
-    font-weight: 400;
-  }
-
-  /* ========== Final ========== */
-  .final-slide { text-align: center; }
-  .final-slide .slide-inner {
+  /* ========== Cierre ========== */
+  .final { text-align: center; }
+  .final .slide-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .final-slide h1 {
-    font-size: clamp(26px, 5vw + 1rem, 92px);
-    margin-bottom: clamp(14px, 2.2vh, 26px);
-  }
-  .final-slide p {
-    text-align: center;
-    max-width: 640px;
-    margin: 0 auto clamp(18px, 2.6vh, 36px);
-  }
-  .cta-box {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(10px, 1.3vh, 14px);
-    padding: clamp(18px, 2.2vw, 30px) clamp(16px, 2.6vw, 40px);
-    background: linear-gradient(180deg, rgba(124,92,252,.1), rgba(34,211,238,.04));
-    border: 1px solid rgba(124,92,252,.3);
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(124,92,252,.2);
-    align-items: center;
-    max-width: 100%;
-  }
-  .cta-url {
-    font-family: var(--mono);
-    font-size: clamp(11.5px, .4vw + 11px, 15px);
-    color: var(--fg);
-    letter-spacing: .02em;
-    padding: clamp(8px, 1vh, 11px) clamp(11px, 1.4vw, 18px);
-    background: rgba(0,0,0,.4);
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    max-width: 100%;
-    overflow-wrap: anywhere;
-    text-align: center;
-  }
-  .cta-url .acc { color: var(--primary-2); }
-  .cta-note {
-    font-size: clamp(10px, .3vw + 9.5px, 12px);
-    color: var(--fg-3);
-    margin: 0;
-    text-align: center;
-  }
-  .final-tagline {
-    font-size: clamp(11.5px, .3vw + 11px, 14.5px);
-    color: var(--fg-3);
-    margin-top: clamp(20px, 3vh, 36px);
-    font-style: italic;
-    text-align: center;
-  }
+  .final h1 { max-width: 800px; }
+  .final p { text-align: center; margin: 0 auto 28px; }
 
-  .cta-btn {
+  .cta {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
     gap: 10px;
-    padding: clamp(11px, 1.5vh, 15px) clamp(18px, 2.2vw, 30px);
+    padding: 14px 26px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     color: #fff;
-    font-size: clamp(12.5px, .4vw + 12px, 16px);
+    font-size: 15px;
     font-weight: 700;
     text-decoration: none;
     border-radius: 12px;
-    letter-spacing: -.01em;
-    box-shadow: 0 12px 40px rgba(124,92,252,.4),
-                0 4px 12px rgba(34,211,238,.2);
-    transition: all .25s cubic-bezier(.4,0,.2,1);
-    position: relative;
-    overflow: hidden;
-    max-width: 100%;
-    text-align: center;
-    flex-wrap: wrap;
+    box-shadow: 0 12px 36px rgba(124,92,252,.35);
+    transition: all .25s;
+    margin-bottom: 14px;
   }
-  .cta-btn::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,.25), transparent 70%);
-    transform: translateX(-100%);
-    transition: transform .6s;
+  .cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 48px rgba(124,92,252,.5);
   }
-  .cta-btn:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 20px 60px rgba(124,92,252,.55),
-                0 6px 16px rgba(34,211,238,.3);
-  }
-  .cta-btn:hover::after { transform: translateX(100%); }
-  .cta-btn .arrow {
-    transition: transform .25s;
-    font-size: 1.1em;
-  }
-  .cta-btn:hover .arrow { transform: translateX(4px); }
+  .cta .arrow { transition: transform .2s; }
+  .cta:hover .arrow { transform: translateX(3px); }
 
-  .hint {
-    position: fixed;
-    bottom: max(20px, env(safe-area-inset-bottom));
-    right: calc(max(14px, env(safe-area-inset-right)) + clamp(80px, 10vw, 110px));
-    font-size: 10.5px;
-    color: var(--fg-3);
+  .cta-url {
     font-family: var(--mono);
-    letter-spacing: .05em;
-    z-index: 100;
-    transition: opacity .3s;
-    background: rgba(15,16,24,.6);
-    padding: 4px 8px;
-    border-radius: 6px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-  .hint kbd {
-    display: inline-block;
-    padding: 2px 6px;
-    background: rgba(255,255,255,.06);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    font-size: 10px;
-    margin: 0 2px;
-  }
-
-  .glow {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: .25;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .glow-1 {
-    width: min(500px, 60vw);
-    height: min(500px, 60vw);
-    background: var(--primary);
-    top: -20%;
-    left: -15%;
-  }
-  .glow-2 {
-    width: min(400px, 50vw);
-    height: min(400px, 50vw);
-    background: var(--accent);
-    bottom: -15%;
-    right: -12%;
-    opacity: .18;
+    font-size: 12px;
+    color: var(--fg-3);
   }
 
   /* ========== Media queries ========== */
-
-  /* Tablets grandes y portátiles pequeños */
-  @media (max-width: 1024px) {
-    :root {
-      --pad-x: clamp(16px, 3.5vw, 40px);
-      --pad-y: clamp(14px, 3vh, 40px);
-    }
-  }
-
-  /* Tablets */
-  @media (max-width: 820px) {
-    .features { grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); }
-    .audience { grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); }
-    .compare { gap: var(--gap-md); }
-    .gradient-chips { grid-template-columns: repeat(5, 1fr); }
-  }
-
-  /* Móviles */
   @media (max-width: 640px) {
-    :root {
-      --pad-x: 18px;
-      --pad-y: 18px;
-      --h1-size: clamp(24px, 7vw + .5rem, 44px);
-      --h2-size: clamp(20px, 6vw + .4rem, 36px);
-    }
-    .brand-corner { display: none; }
-    .hint { display: none; }
-    .gradient-chips { grid-template-columns: repeat(4, 1fr); }
-    .slide-inner {
-      justify-content: flex-start;
-      padding-top: 4px;
-      padding-bottom: 4px;
-    }
-    .final-slide .slide-inner {
-      justify-content: center;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    /* En móvil, los grids se apilan completamente */
-    .features,
-    .audience,
-    .price-grid,
-    .steps,
-    .pipeline,
-    .compare,
-    .ba,
-    .gradient-demo {
-      grid-template-columns: 1fr;
-    }
-    .compare-head { font-size: 10.5px; letter-spacing: .1em; }
-    .dev-live {
-      font-size: 9.5px;
-      letter-spacing: .03em;
-      padding: 6px 11px;
-    }
-    .dev-live .live-dot { width: 6px; height: 6px; }
+    :root { --pad-x: 18px; --pad-y: 18px; }
+    .brand { display: none; }
+    .grid, .flow, .feat, .cmp, .pipeline, .stack { margin-top: 20px; }
   }
-
-  /* Móviles pequeños */
   @media (max-width: 400px) {
-    :root {
-      --pad-x: 14px;
-      --pad-y: 14px;
-    }
-    .gradient-chips { grid-template-columns: repeat(3, 1fr); }
-    .cta-box { padding: 16px 14px; border-radius: 16px; }
-    .cta-url { font-size: 10.5px; }
-    .pill { font-size: 10px; padding: 5px 10px; }
-    .price-card.winner::before { font-size: 8px; padding: 3px 8px; }
-    .dev-quote { padding: 14px 12px; }
-    .pain-item { padding: 10px 12px; }
+    :root { --pad-x: 14px; --pad-y: 14px; }
+    .codeblock { padding: 14px; font-size: 11px; }
   }
-
-  /* Móvil en horizontal: poca altura */
-  @media (max-height: 520px) and (orientation: landscape) {
-    :root {
-      --pad-y: 10px;
-      --pad-x: 20px;
-    }
-    h1 { margin-bottom: 6px; }
-    h2 { margin-bottom: 8px; }
-    .eyebrow { margin-bottom: 5px; }
-    .slide-inner {
-      justify-content: flex-start;
-      padding-top: 0;
-      padding-bottom: 0;
-    }
-    .pill, .dev-live { margin-bottom: 8px; }
-    .pain-list { margin-top: 10px; }
-    .steps, .features, .pipeline, .audience, .compare, .ba, .gradient-demo, .price-grid {
-      margin-top: 12px;
-    }
+  @media (max-height: 500px) and (orientation: landscape) {
+    :root { --pad-y: 12px; --pad-x: 24px; }
+    h1 { margin-bottom: 8px; }
+    h2 { margin-bottom: 10px; }
+    .grid, .flow, .feat, .cmp, .pipeline, .stack { margin-top: 14px; }
   }
-
-  /* Pantallas muy altas y estrechas: respiración adicional */
-  @media (min-width: 900px) and (max-width: 1100px) and (min-height: 900px) {
-    .slide-inner { padding: 20px 0; }
-  }
-
-  /* Monitores grandes: no estirar infinito */
-  @media (min-width: 1600px) {
-    .slide-inner { max-width: 1400px; }
-  }
-
-  /* Accesibilidad: reduce motion */
   @media (prefers-reduced-motion: reduce) {
-    .slide { transition: opacity .2s; }
+    .slide { transition: opacity .15s; transform: none; }
     .slide.active { transform: none; }
-    .slide.prev { transform: none; }
-    .dev-live .live-dot { animation: none; }
-    .pill .dot { animation: none; }
+    .live-dot { animation: none; }
   }
 </style>
 </head>
 <body>
 
-<div class="glow glow-1"></div>
-<div class="glow glow-2"></div>
-
 <div class="progress"><div class="progress-fill" id="progress"></div></div>
-
-<div class="brand-corner">
-  <span class="dot">◐</span>
-  <span>OpenCanvas Studio</span>
-</div>
+<div class="brand"><span class="mark">◐</span> OpenCanvas Studio</div>
 
 <div class="deck" id="deck">
 
-  <!-- 1. PORTADA -->
-  <section class="slide title-slide active">
+  <!-- 1. QUÉ ES -->
+  <section class="slide cover active">
     <div class="slide-inner">
-      <div class="pill"><span class="dot"></span> Para sitios en GitHub Pages</div>
+      <span class="tag">Editor visual · GitHub Pages</span>
       <h1>
-        Editar tu web<br>
-        nunca debería costarte<br>
-        <span class="gradient-text">una tarde entera.</span>
+        Edita sitios estáticos sin tocar el código.<br>
+        Los cambios se guardan como commits.
       </h1>
-      <p class="sub">
-        Mueve, redimensiona, escribe y guarda tu sitio como si fuera un programa de diseño.
-        Sin código. Sin WordPress. Sin pagar suscripciones.
+      <p class="lead">
+        OpenCanvas Studio es una app web que se conecta a un repo de GitHub,
+        renderiza el sitio en un iframe editable, y hace commit de los cambios
+        usando la API de GitHub.
       </p>
-      <p class="big muted">OpenCanvas Studio. Un lienzo visual sobre tu repositorio de GitHub.</p>
+      <div class="def">
+        <p>
+          <strong>En una frase:</strong> un editor visual para sitios estáticos alojados en GitHub Pages
+          que genera commits automáticos — sin CMS, sin base de datos, sin backend propio.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -1061,393 +588,332 @@
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">El problema</div>
-      <h2>Tienes un sitio.<br>Y cada cambio es <span style="color: var(--danger);">una batalla.</span></h2>
-      <div class="pain-list">
-        <div class="pain-item"><span class="ico">✕</span> Abres VS Code, buscas el archivo, encuentras la línea, cambias una palabra, y rezas para no romper nada.</div>
-        <div class="pain-item"><span class="ico">✕</span> Quieres mover un botón 2 centímetros y acabas peleándote con CSS hasta las 2 de la mañana.</div>
-        <div class="pain-item"><span class="ico">✕</span> Instalas WordPress y descubres que el tema que te gusta cuesta $79 al año, el plugin de formularios $49 más, y el SSL $99 más.</div>
-        <div class="pain-item"><span class="ico">✕</span> Contratas un hosting para WordPress porque "es más fácil" y acabas pagando $12/mes para siempre.</div>
-        <div class="pain-item"><span class="ico">✕</span> Se te olvida una coma, haces push, y tu web entera se queda en blanco sin saber por qué.</div>
-        <div class="pain-item"><span class="ico">✕</span> Cada vez que alguien te pide cambiar una palabra, pierdes 15 minutos de tu vida.</div>
-      </div>
-    </div>
-  </section>
+      <h2>Editar contenido en un sitio estático es incómodo.</h2>
+      <p>Actualmente, cambiar un texto o una imagen en un sitio en GitHub Pages implica:</p>
 
-  <!-- 3. WORDPRESS vs OPENCANVAS -->
-  <section class="slide">
-    <div class="slide-inner">
-      <div class="eyebrow">La comparación que duele</div>
-      <h2>WordPress te cobra por todo.<br><span class="gradient-text">OpenCanvas, no.</span></h2>
-      <div class="compare">
-        <div class="compare-card bad">
-          <div class="compare-head">WordPress · Lo que ya sabes</div>
-          <ul class="compare-list">
-            <li>Hosting: $5–$25 al mes, para siempre</li>
-            <li>Temas premium: $49–$199 por año</li>
-            <li>Plugins de formularios, SEO, caché: $30–$300 al año</li>
-            <li>Plugins de seguridad para evitar hackeos: $99 al año</li>
-            <li>Mantenimiento, actualizaciones y roturas: horas de tu vida</li>
-            <li>Métricas y analítica: otro plugin más, otra suscripción</li>
-            <li>Backups: otro plugin más, otra suscripción</li>
-            <li>Rendimiento lento si no optimizas todo</li>
-            <li>Dependes de un ecosistema que puede cambiar cuando quiera</li>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 class="red">Flujo actual del cliente</h3>
+          <ul class="list">
+            <li>Clonar el repo o abrir el editor en GitHub.</li>
+            <li>Buscar el archivo HTML correcto.</li>
+            <li>Encontrar el bloque dentro del markup.</li>
+            <li>Editar a mano con riesgo de romper el layout.</li>
+            <li>Hacer commit y esperar el build de Pages.</li>
           </ul>
         </div>
-        <div class="compare-card good">
-          <div class="compare-head">OpenCanvas Studio · Lo que descubres</div>
-          <ul class="compare-list">
-            <li>Hosting: $0 — GitHub Pages es gratis para siempre</li>
-            <li>Temas: tu propio diseño, sin pagar por plantillas</li>
-            <li>Editor visual completo incluido</li>
-            <li>Sin plugins, sin mantenimiento, sin actualizaciones</li>
-            <li>Sin vulnerabilidades. Es HTML estático. No hay nada que hackear.</li>
-            <li>Sin base de datos. Sin PHP. Sin sorpresas.</li>
-            <li>Cargas instantáneas. Sin caché que configurar.</li>
-            <li>Tu contenido vive en tu GitHub, no en el servidor de nadie</li>
-            <li>Editas como un diseñador, no como un administrador de sistemas</li>
+        <div class="card">
+          <h3 class="accent">Consecuencia</h3>
+          <ul class="list">
+            <li>El cliente no puede editar su propio sitio.</li>
+            <li>El desarrollador recibe tickets por cambios triviales.</li>
+            <li>Alternativas: instalar un CMS (más infra) o dar acceso al repo (riesgo).</li>
+            <li>Mantener WordPress / Strapi / similar para sitios que son solo HTML.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 4. EL PRECIO REAL -->
+  <!-- 3. CÓMO FUNCIONA -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">El coste real</div>
-      <h2>Cuánto te cuesta <span class="gradient-text">de verdad</span> tener una web.</h2>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-brand">WordPress clásico</div>
-          <div class="price-amount">$290<span class="per"> / año</span></div>
-          <div class="price-note">Hosting + tema + plugins esenciales. Y todavía tienes que aprender a usarlo.</div>
-          <ul class="price-feats">
-            <li><span class="cross">✕</span> Pagas cada año, para siempre</li>
-            <li><span class="cross">✕</span> Necesitas plugins de seguridad</li>
-            <li><span class="cross">✕</span> Si se cae, se cae todo</li>
-            <li><span class="tick">✓</span> Editor visual incluido</li>
-          </ul>
-        </div>
-        <div class="price-card">
-          <div class="price-brand">Squarespace / Wix / Webflow</div>
-          <div class="price-amount">$180–$500<span class="per"> / año</span></div>
-          <div class="price-note">Bonitos, fáciles… y completamente cerrados. Tu contenido vive en su nube, no en la tuya.</div>
-          <ul class="price-feats">
-            <li><span class="cross">✕</span> No puedes exportar tu web sin pagar</li>
-            <li><span class="cross">✕</span> Sube el precio cuando quieran</li>
-            <li><span class="cross">✕</span> Tus datos no son tuyos</li>
-            <li><span class="tick">✓</span> Editor visual incluido</li>
-          </ul>
-        </div>
-        <div class="price-card winner">
-          <div class="price-brand">OpenCanvas Studio</div>
-          <div class="price-amount">$0<span class="per"> para siempre</span></div>
-          <div class="price-note">Edición visual completa. Tu contenido en GitHub. Tu web es tuya. Fin.</div>
-          <ul class="price-feats">
-            <li><span class="tick">✓</span> Sin suscripciones, nunca</li>
-            <li><span class="tick">✓</span> Sin plugins, sin mantenimiento</li>
-            <li><span class="tick">✓</span> Sin vulnerabilidades: es estático</li>
-            <li><span class="tick">✓</span> Editor visual completo incluido</li>
-            <li><span class="tick">✓</span> Código abierto: si un día quieres mejorar algo, puedes</li>
-          </ul>
-        </div>
-      </div>
-      <p class="huge" style="margin-top: clamp(20px, 3vh, 44px); max-width: 900px;">
-        En 5 años, WordPress te habrá costado más de <span class="gradient-text">$1,450</span>.<br>
-        OpenCanvas Studio: <span class="gradient-text">$0</span>.
+      <div class="eyebrow">Cómo funciona</div>
+      <h2>GitHub API + iframe editable + commit automático.</h2>
+      <p>
+        No hay backend propio. El navegador habla directo con la API de GitHub usando
+        un Personal Access Token que el usuario ingresa una vez.
       </p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">PASO 01</div>
+          <h3>Auth</h3>
+          <p>El usuario pega un <code>PAT</code>. Se guarda en <code>localStorage</code>. Se valida contra <code>GET /repos/:owner/:repo</code>.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">PASO 02</div>
+          <h3>Fetch</h3>
+          <p>Se listan los HTML del repo con <code>GET /git/trees/:branch?recursive=1</code> y se traen los contenidos con <code>GET /contents/:path</code>.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">PASO 03</div>
+          <h3>Render</h3>
+          <p>El HTML se inyecta en un <code>&lt;iframe&gt;</code> con un <code>&lt;base&gt;</code> que apunta a <code>usuario.github.io/repo/</code> para resolver CSS e imágenes.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">PASO 04</div>
+          <h3>Edit</h3>
+          <p>El usuario mueve, redimensiona y edita elementos. Los cambios se aplican al DOM del iframe en tiempo real.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">PASO 05</div>
+          <h3>Commit</h3>
+          <p>Al guardar, se serializa el DOM, se limpian inyecciones, y se hace <code>PUT /contents/:path</code> con base64 + sha.</p>
+        </div>
+      </div>
+
+      <div class="codeblock">
+<span class="c">// El commit se hace con la API REST, sin backend</span>
+<span class="k">PUT</span> /repos/<span class="s">{owner}</span>/<span class="s">{repo}</span>/contents/<span class="s">{path}</span>
+{
+  <span class="k">"message"</span>: <span class="s">"Update index.html via OpenCanvas Studio"</span>,
+  <span class="k">"content"</span>: <span class="s">"&lt;base64 del HTML editado&gt;"</span>,
+  <span class="k">"branch"</span>: <span class="s">"main"</span>,
+  <span class="k">"sha"</span>:    <span class="s">"&lt;sha actual del archivo&gt;"</span>
+}
+<span class="ok">→ 200 OK · nuevo commit en el repo · GitHub Pages reconstruye solo</span>
+      </div>
     </div>
   </section>
 
-  <!-- 5. LO QUE OTRAS TOOLS NO HACEN -->
+  <!-- 4. STACK -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Lo que ninguna otra hace</div>
-      <h2>Editor visual real<br><span class="gradient-text">sobre tu GitHub.</span></h2>
-      <p class="big" style="margin-bottom: clamp(10px, 1.6vh, 18px);">
-        Otras herramientas te obligan a elegir: o es visual, o vive en Git.
-        OpenCanvas Studio te da las dos cosas.
+      <div class="eyebrow">Stack técnico</div>
+      <h2>Sin frameworks, sin dependencias, sin build.</h2>
+      <p>
+        Es una SPA estática de 4 archivos que corre 100% en el navegador.
+        Se puede alojar en el mismo GitHub Pages.
       </p>
-      <div class="features">
-        <div class="feature">
-          <div class="ico">✥</div>
-          <h3>Mover con el mouse</h3>
-          <p>Arrastras cualquier elemento. Tiras de las esquinas y cambia de tamaño. Nada de números.</p>
+
+      <div class="stack">
+        <div class="stack-item">
+          <div class="label">Runtime</div>
+          <div class="value">Navegador (vanilla JS)</div>
         </div>
-        <div class="feature">
-          <div class="ico">✎</div>
-          <h3>Editar texto como en Word</h3>
-          <p>Doble clic, cursor donde quieras, escribes. Ni selects todo, ni reemplazas nada.</p>
+        <div class="stack-item">
+          <div class="label">Módulos</div>
+          <div class="value">ES Modules nativos</div>
         </div>
-        <div class="feature">
-          <div class="ico">🎨</div>
-          <h3>Degradados infinitos</h3>
-          <p>Stops ilimitados con posición exacta. Ni dos colores ni "el preset más cercano".</p>
+        <div class="stack-item">
+          <div class="label">Backend</div>
+          <div class="value">Ninguno</div>
         </div>
-        <div class="feature">
-          <div class="ico">≡</div>
-          <h3>Editor de menús con submenús</h3>
-          <p>Detecta header y footer. Submenús anidados ilimitados. Ningún plugin de WordPress te da esto en un panel.</p>
+        <div class="stack-item">
+          <div class="label">Base de datos</div>
+          <div class="value">Ninguna</div>
         </div>
-        <div class="feature">
-          <div class="ico">📄</div>
-          <h3>Crear páginas en 30 segundos</h3>
-          <p>Pulsas "+ Página", pones el título, y se añade sola al menú de todas las demás.</p>
+        <div class="stack-item">
+          <div class="label">API</div>
+          <div class="value">GitHub REST v3</div>
         </div>
-        <div class="feature">
-          <div class="ico">↶</div>
-          <h3>Undo / Redo de 60 pasos</h3>
-          <p>Ctrl+Z y Ctrl+Y, siempre. Como en cualquier programa serio. Sin límites artificiales.</p>
+        <div class="stack-item">
+          <div class="label">Auth</div>
+          <div class="value">PAT en localStorage</div>
         </div>
-        <div class="feature">
-          <div class="ico">🎬</div>
-          <h3>Animaciones de entrada</h3>
-          <p>10 efectos listos. Previsualiza sin recargar. Guarda y ya están en producción.</p>
+        <div class="stack-item">
+          <div class="label">Archivos</div>
+          <div class="value">index.html · styles.css · app.js · github.js</div>
         </div>
-        <div class="feature">
-          <div class="ico">📱</div>
-          <h3>Vista responsive real</h3>
-          <p>Cambia entre escritorio, tablet y móvil para ver cómo queda en cada uno.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">⚡</div>
-          <h3>Sesión persistente</h3>
-          <p>Entras una vez. La próxima vez ya estás dentro. Cero fricción. Cero tokens repitiendo.</p>
+        <div class="stack-item">
+          <div class="label">Build</div>
+          <div class="value">Ninguno</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. CÓMO SE SIENTE -->
+  <!-- 5. FEATURES -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">La experiencia</div>
-      <h2>Así se siente <span class="gradient-text">usarlo</span>.</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="num">01 / ABRIR</div>
-          <h3>Entras a la herramienta</h3>
-          <p>Pegas tu token una vez. Se guarda. No lo vuelves a pedir nunca. Ni siquiera si cierras el navegador.</p>
-        </div>
-        <div class="step">
-          <div class="num">02 / TOCAR</div>
-          <h3>Haces clic en lo que quieras</h3>
-          <p>Se ilumina. Lo arrastras. Tiras de las esquinas. Doble clic y el cursor cae dentro del texto.</p>
-        </div>
-        <div class="step">
-          <div class="num">03 / GUARDAR</div>
-          <h3>Pulsas Guardar</h3>
-          <p>En 30 segundos tu web está actualizada en internet. Sin terminal. Sin commit. Sin esperas eternas.</p>
-        </div>
-      </div>
-      <p class="huge" style="margin-top: clamp(20px, 3vh, 44px); max-width: 800px;">
-        La primera vez que lo pruebas, ya no vuelves atrás.
-      </p>
-    </div>
-  </section>
+      <div class="eyebrow">Funcionalidades</div>
+      <h2>Qué hace hoy.</h2>
 
-  <!-- 7. DEGRADADOS -->
-  <section class="slide">
-    <div class="slide-inner">
-      <div class="eyebrow">El detalle que importa</div>
-      <h2>Degradados <span class="gradient-text">de verdad.</span></h2>
-      <div class="gradient-demo">
-        <div>
-          <div class="gradient-title rainbow-text">ARCO<br>ÍRIS</div>
-          <div class="gradient-title sunset-text">SUNSET</div>
+      <div class="feat">
+        <div class="feat-item">
+          <div class="icon">↔</div>
+          <div class="body">
+            <h3>Mover elementos</h3>
+            <p>Drag con umbral de 3px, flechas del teclado para ajuste fino.</p>
+          </div>
         </div>
-        <div>
-          <p class="big" style="margin-bottom: clamp(10px, 1.6vh, 22px);">
-            No dos colores. <span class="highlight">Stops ilimitados.</span><br>
-            Cada uno con su color y su posición exacta.
-          </p>
-          <p style="margin-bottom: clamp(10px, 1.6vh, 22px);">
-            Aplicas un degradado a un título, un botón o un fondo con un clic.
-            O lo conviertes en texto degradado sin escribir una línea de CSS.
-          </p>
-          <div class="gradient-chips">
-            <div class="gchip rainbow" title="Arcoíris"></div>
-            <div class="gchip sunset" title="Sunset"></div>
-            <div class="gchip ocean" title="Océano"></div>
-            <div class="gchip fire" title="Fuego"></div>
-            <div class="gchip pastel" title="Pastel"></div>
-            <div class="gchip neon" title="Neón"></div>
-            <div class="gchip aurora" title="Aurora"></div>
-            <div class="gchip forest" title="Bosque"></div>
-            <div class="gchip galaxy" title="Galaxia"></div>
-            <div class="gchip mono" title="Monocromo"></div>
+        <div class="feat-item">
+          <div class="icon">⤡</div>
+          <div class="body">
+            <h3>Redimensionar</h3>
+            <p>8 handles por elemento con el cursor correcto por dirección.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="icon">✎</div>
+          <div class="body">
+            <h3>Edición de texto</h3>
+            <p><code>designMode</code> activado, el caret cae donde el usuario hace clic.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="icon">🎨</div>
+          <div class="body">
+            <h3>Degradados multi-stop</h3>
+            <p>Lineal, radial y cónico. Stops ilimitados con posición ajustable.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="icon">≡</div>
+          <div class="body">
+            <h3>Editor de menús</h3>
+            <p>Detecta header y footer. Edita submenús anidados sin tocar HTML.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="icon">📄</div>
+          <div class="body">
+            <h3>Gestión de páginas</h3>
+            <p>Crea páginas nuevas y las añade al menú de todas las demás.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="icon">↶</div>
+          <div class="body">
+            <h3>Undo / Redo</h3>
+            <p>Ctrl+Z / Ctrl+Y con historial de 60 snapshots del DOM.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="icon">🎬</div>
+          <div class="body">
+            <h3>Animaciones</h3>
+            <p>10 presets de entrada aplicados por clase + CSS variables.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="icon">📱</div>
+          <div class="body">
+            <h3>Vista responsive</h3>
+            <p>Toggle escritorio / tablet / móvil en el canvas.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. BEFORE / AFTER -->
+  <!-- 6. DIFERENCIA CON OTRAS HERRAMIENTAS -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Comparación directa</div>
-      <h2>Lo que hacías<br>vs. lo que harás.</h2>
-      <div class="ba">
-        <div class="ba-col bad">
-          <div class="ba-label">A mano · 8 pasos · 15 minutos</div>
-          <div class="ba-body">
-            <span class="cmt">// 1. Abrir VS Code</span><br>
-            <span class="cmt">// 2. Buscar el archivo</span><br>
-            <span class="cmt">// 3. Encontrar la línea</span><br>
-            <span class="cmt">// 4. Editar con cuidado</span><br>
-            <span class="cmt">// 5. Verificar que no rompió</span><br>
-            git <span class="kw">add</span> .<br>
-            git <span class="kw">commit</span> -m <span class="str">"cambio"</span><br>
-            git <span class="kw">push</span><br>
-            <span class="cmt">// 6. Esperar 30s</span><br>
-            <span class="cmt">// 7. Ctrl+F5</span><br>
-            <span class="cmt">// 8. Rezar</span> 🙏
-          </div>
+      <div class="eyebrow">Diferencia</div>
+      <h2>Edición visual sobre Git, sin CMS.</h2>
+
+      <div class="cmp">
+        <div class="cmp-col alt">
+          <div class="cmp-head">CMS Git-based (Tina, Decap, Pages CMS)</div>
+          <ul class="cmp-list">
+            <li><span class="mark no">✕</span> Edición basada en formularios sobre front-matter, no visual</li>
+            <li><span class="mark no">✕</span> Requieren configuración de schema por cada campo</li>
+            <li><span class="mark no">✕</span> OAuth con backend o servicio externo para GitHub Pages</li>
+            <li><span class="mark no">✕</span> No permiten mover ni redimensionar elementos</li>
+            <li><span class="mark yes">✓</span> Multi-usuario y flujo editorial</li>
+            <li><span class="mark yes">✓</span> Formularios estructurados</li>
+          </ul>
         </div>
-        <div class="ba-col good">
-          <div class="ba-label">OpenCanvas · 3 pasos · 15 segundos</div>
-          <div class="ba-body">
-            <span class="ok">→</span> <span class="kw">Clic</span> en el elemento<br><br>
-            <span class="ok">→</span> <span class="kw">Editar</span> arrastrando / escribiendo<br><br>
-            <span class="ok">→</span> Pulsar <span class="kw">Guardar</span><br><br>
-            <span class="ok">✓</span> Web actualizada.<br>
-            <span class="ok">✓</span> Cero estrés.<br>
-            <span class="ok">✓</span> Cero código.<br>
-            <span class="ok">✓</span> Cero suscripciones.
-          </div>
+        <div class="cmp-col ours">
+          <div class="cmp-head">OpenCanvas Studio</div>
+          <ul class="cmp-list">
+            <li><span class="mark yes">✓</span> Edición directa sobre el HTML renderizado, sin schemas</li>
+            <li><span class="mark yes">✓</span> Drag, resize y edición in-place como en Figma</li>
+            <li><span class="mark yes">✓</span> Sin backend: PAT directo a la API de GitHub</li>
+            <li><span class="mark yes">✓</span> Funciona con cualquier HTML existente, sin migración</li>
+            <li><span class="mark no">✕</span> Un solo usuario por sesión</li>
+            <li><span class="mark no">✕</span> No hay flujo editorial ni revisión</li>
+          </ul>
+        </div>
+      </div>
+
+      <p style="margin-top: 24px; color: var(--fg-3); font-size: var(--small);">
+        No compite con un CMS. Es una capa de edición visual para sitios que no necesitan uno.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. CASOS DE USO -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Casos de uso</div>
+      <h2>Dónde tiene sentido.</h2>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3 class="accent">Agencias y freelancers</h3>
+          <ul class="list">
+            <li>Entregar el sitio al cliente con editor incluido.</li>
+            <li>Evitar tickets por cambios de texto o imágenes.</li>
+            <li>No instalar WordPress solo para que el cliente edite.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="accent">Landings y sitios one-page</h3>
+          <ul class="list">
+            <li>Sin CMS completo para una sola página.</li>
+            <li>Cambios frecuentes: precios, textos, banners.</li>
+            <li>El cliente edita sin tocar el repo.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="accent">Portafolios y sitios personales</h3>
+          <ul class="list">
+            <li>Actualizar proyectos sin abrir VS Code.</li>
+            <li>Editar desde el navegador en cualquier equipo.</li>
+            <li>Sin instalar nada, sin build, sin CLI.</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 9. AUDIENCIA -->
+  <!-- 8. ESTADO -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Para quién es</div>
-      <h2>Si tienes un sitio, <span class="gradient-text">es para ti.</span></h2>
-      <div class="audience">
-        <div class="aud-card">
-          <span class="aud-emoji">🎨</span>
-          <h3>Diseñadores gráficos</h3>
-          <p>Control real sobre tu portafolio sin abrir un editor de código.</p>
-        </div>
-        <div class="aud-card">
-          <span class="aud-emoji">📸</span>
-          <h3>Fotógrafos y artistas</h3>
-          <p>Actualiza tu galería o tu bio sin depender de nadie.</p>
-        </div>
-        <div class="aud-card">
-          <span class="aud-emoji">✍️</span>
-          <h3>Creadores de contenido</h3>
-          <p>Publica cambios cada semana sin fricción ni esperas.</p>
-        </div>
-        <div class="aud-card">
-          <span class="aud-emoji">🚀</span>
-          <h3>Startups y freelancers</h3>
-          <p>Una landing que puedes actualizar tú mismo en minutos, sin dev ni WordPress.</p>
-        </div>
-        <div class="aud-card">
-          <span class="aud-emoji">💻</span>
-          <h3>Desarrolladores</h3>
-          <p>Deja de hacer commits por cambiar una palabra. Concéntrate en lo importante.</p>
-        </div>
-        <div class="aud-card">
-          <span class="aud-emoji">✨</span>
-          <h3>Cualquier persona</h3>
-          <p>Que tenga un sitio en GitHub Pages y valore su tiempo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 10. DESARROLLO CONSTANTE -->
-  <section class="slide">
-    <div class="slide-inner">
-      <div class="dev-live">
+      <div class="live-badge">
         <span class="live-dot"></span>
-        EN MOVIMIENTO CONSTANTE · SIEMPRE MEJORANDO
+        DESARROLLO ACTIVO
       </div>
-      <div class="eyebrow">Esto no se detiene</div>
-      <h2>
-        Herramienta viva.<br>
-        <span class="gradient-text">Desarrollamos cada vez que respiras.</span>
-      </h2>
-      <p class="big" style="max-width: 800px;">
-        OpenCanvas Studio no está terminado. Y nunca lo estará, porque cada persona que la usa
-        descubre algo nuevo. Y cuando algo falta, entra directo a nuestro radar de mejoras.
+      <div class="eyebrow">Estado del proyecto</div>
+      <h2>Funciona hoy. Sigue evolucionando.</h2>
+      <p>
+        La herramienta está operativa. El roadmap no es fijo: se alimenta de lo que
+        los usuarios reportan. Bugs, sugerencias o features que faltan entran al pipeline.
       </p>
 
       <div class="pipeline">
         <div class="pipe-step">
-          <div class="pipe-icon">💡</div>
-          <div class="pipe-num">Paso 01</div>
-          <h3>Tú detectas algo</h3>
-          <p>Un botón que falta, un menú que se ve raro, una función que no existe, un error, una idea. Cualquier cosa.</p>
+          <div class="pipe-num">REPORTE</div>
+          <h3>Llega un bug o sugerencia</h3>
+          <p>Del usuario, del repo, de quien sea. Sin burocracia ni formularios.</p>
         </div>
         <div class="pipe-step">
-          <div class="pipe-icon">📡</div>
-          <div class="pipe-num">Paso 02</div>
-          <h3>Entra a nuestro radar</h3>
-          <p>Lo anotamos. Sin filtros, sin burocracia. Tu sugerencia, tu error o tu idea ya está en el pipeline de mejoras.</p>
+          <div class="pipe-num">TRIAGE</div>
+          <h3>Entra al radar</h3>
+          <p>Se evalúa y se prioriza. No hay promesas de fechas.</p>
         </div>
         <div class="pipe-step">
-          <div class="pipe-icon">🚀</div>
-          <div class="pipe-num">Paso 03</div>
+          <div class="pipe-num">RELEASE</div>
           <h3>Se lanza</h3>
-          <p>Lo desarrollamos y sale al aire. Y no al año. Al ritmo de una herramienta que nunca deja de moverse.</p>
+          <p>Sale al aire cuando está listo. Sin versiones ni ciclos largos.</p>
         </div>
-      </div>
-
-      <div class="dev-quote">
-        <p>
-          "OpenCanvas Studio no es un producto. Es una conversación. Cada función que existe hoy
-          nació de alguien que dijo <em>«esto falta»</em> o <em>«esto se rompió»</em>.
-          Seguimos moviéndonos porque ustedes siguen pidiendo."
-          <span class="attribution">— El equipo de OpenCanvas Studio, hoy y mañana</span>
-        </p>
       </div>
     </div>
   </section>
 
-  <!-- 11. CIERRE -->
-  <section class="slide final-slide">
+  <!-- 9. CIERRE -->
+  <section class="slide final">
     <div class="slide-inner">
-      <div class="eyebrow" style="text-align: center;">Empieza ahora</div>
-      <h1>
-        Tu web <span class="gradient-text">te está esperando.</span>
-      </h1>
-      <p class="big">
-        Edita como diseñador. Guarda como desarrollador.<br>
-        Paga como nadie: cero, para siempre.
+      <div class="eyebrow">Probar</div>
+      <h1>Está corriendo acá.</h1>
+      <p class="lead" style="max-width: 560px;">
+        Abrí la app, pegá un Personal Access Token con scope <code>repo</code>
+        y conectá cualquier repo con GitHub Pages activado.
       </p>
-      <div class="cta-box">
-        <div class="cta-url">
-          keyworkspace.github.io/<span class="acc">opencanvas-studio</span>
-        </div>
-        <a
-          class="cta-btn"
-          href="https://keyworkspace.github.io/opencanvas-studio/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Abrir OpenCanvas Studio <span class="arrow">→</span>
-        </a>
-        <p class="cta-note">Pega tu token · Edita · Guarda · Sigue con tu vida.</p>
-      </div>
-      <p class="final-tagline">
-        OpenCanvas Studio · Diseña tu sitio. Sin código. Sin suscripciones. Sin excusas.
-      </p>
+      <a class="cta" href="https://keyworkspace.github.io/opencanvas-studio/" target="_blank" rel="noopener">
+        Abrir OpenCanvas Studio <span class="arrow">→</span>
+      </a>
+      <div class="cta-url">keyworkspace.github.io/opencanvas-studio</div>
     </div>
   </section>
 
 </div>
 
-<div class="hint">
-  <kbd>←</kbd> <kbd>→</kbd> para navegar
-</div>
-
-<div class="slide-counter">
-  <span class="current" id="cur">01</span> / <span id="total">11</span>
+<div class="counter">
+  <span class="current" id="cur">01</span> / <span id="total">09</span>
 </div>
 
 <div class="nav">
@@ -1464,9 +930,8 @@
 
   function updateUI() {
     slides.forEach((s, i) => {
-      s.classList.remove('active', 'prev');
+      s.classList.remove('active');
       if (i === current) s.classList.add('active');
-      else if (i < current) s.classList.add('prev');
     });
     document.getElementById('cur').textContent = String(current + 1).padStart(2, '0');
     document.getElementById('progress').style.width = ((current + 1) / total * 100) + '%';
@@ -1488,32 +953,25 @@
 
   window.addEventListener('keydown', (e) => {
     if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)) return;
-    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
-      e.preventDefault(); go(1);
-    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-      e.preventDefault(); go(-1);
-    } else if (e.key === 'Home') {
-      e.preventDefault(); current = 0; updateUI();
-    } else if (e.key === 'End') {
-      e.preventDefault(); current = total - 1; updateUI();
-    } else if (e.key === 'f' || e.key === 'F') {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); current = 0; updateUI(); }
+    else if (e.key === 'End') { e.preventDefault(); current = total - 1; updateUI(); }
+    else if (e.key === 'f' || e.key === 'F') {
       if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
       else document.exitFullscreen?.();
     }
   });
 
-  let touchStartX = 0;
-  let touchStartY = 0;
+  let tx = 0, ty = 0;
   window.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
+    tx = e.touches[0].clientX;
+    ty = e.touches[0].clientY;
   }, { passive: true });
   window.addEventListener('touchend', (e) => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      go(dx < 0 ? 1 : -1);
-    }
+    const dx = e.changedTouches[0].clientX - tx;
+    const dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
   }, { passive: true });
 
   updateUI();
