@@ -21,7 +21,7 @@
     --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
     --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-    --h1: clamp(26px, 4.5vw + .8rem, 64px);
+    --h1: clamp(26px, 4.5vw + .8rem, 60px);
     --h2: clamp(22px, 3vw + .5rem, 44px);
     --h3: clamp(14px, .5vw + 12px, 17px);
     --body: clamp(13.5px, .35vw + 12px, 16px);
@@ -46,7 +46,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ========== Deck ========== */
   .deck { position: fixed; inset: 0; overflow: hidden; }
 
   .slide {
@@ -83,7 +82,6 @@
     margin: auto;
   }
 
-  /* ========== Chrome ========== */
   .progress {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -165,7 +163,6 @@
     font-size: 10px;
   }
 
-  /* ========== Typography ========== */
   .eyebrow {
     font-size: 11px;
     font-weight: 600;
@@ -179,7 +176,7 @@
     font-weight: 800;
     line-height: 1.08;
     letter-spacing: -.025em;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     overflow-wrap: break-word;
   }
   h2 {
@@ -187,7 +184,7 @@
     font-weight: 700;
     line-height: 1.15;
     letter-spacing: -.02em;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
     overflow-wrap: break-word;
   }
   h3 {
@@ -217,15 +214,6 @@
     color: var(--fg);
   }
 
-  /* ========== Utilidades ========== */
-  .grid {
-    display: grid;
-    gap: var(--gap);
-    margin-top: 28px;
-  }
-  .grid-2 { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
-  .grid-3 { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
-
   .card {
     padding: clamp(16px, 1.8vw, 22px);
     background: var(--bg-2);
@@ -238,13 +226,13 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
   .list li {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     align-items: flex-start;
-    font-size: var(--small);
+    font-size: var(--body);
     color: var(--fg-2);
     line-height: 1.5;
   }
@@ -255,7 +243,7 @@
     font-family: var(--mono);
   }
 
-  /* ========== Portada ========== */
+  /* Cover */
   .cover .tag {
     display: inline-block;
     font-family: var(--mono);
@@ -265,13 +253,13 @@
     border: 1px solid rgba(124,92,252,.25);
     padding: 5px 12px;
     border-radius: 999px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
   }
   .cover h1 { max-width: 900px; }
-  .cover .lead { max-width: 640px; margin-bottom: 24px; }
+  .cover .lead { max-width: 640px; margin-bottom: 26px; }
 
   .def {
-    margin-top: 28px;
+    margin-top: 26px;
     padding: 18px 22px;
     background: var(--bg-2);
     border-left: 3px solid var(--primary);
@@ -281,45 +269,53 @@
   .def p { color: var(--fg); font-size: var(--body); }
   .def strong { color: var(--primary-2); }
 
-  /* ========== Flujo ========== */
+  /* Simple step sequence (una sola fila con flechas) */
   .flow {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
     gap: var(--gap);
     margin-top: 28px;
-    position: relative;
   }
   .flow-step {
-    padding: 20px;
+    padding: 18px;
     background: var(--bg-2);
     border: 1px solid var(--border);
     border-radius: 12px;
     min-width: 0;
-    position: relative;
   }
   .flow-num {
     font-family: var(--mono);
-    font-size: 11px;
+    font-size: 10.5px;
     color: var(--primary-2);
     font-weight: 600;
-    letter-spacing: .08em;
-    margin-bottom: 10px;
+    letter-spacing: .1em;
+    margin-bottom: 8px;
   }
-  .flow-step h3 { font-size: 15px; margin-bottom: 8px; }
-  .flow-step p { font-size: var(--small); }
+  .flow-step h3 { font-size: 14.5px; margin-bottom: 6px; }
+  .flow-step p { font-size: var(--small); line-height: 1.5; }
 
-  /* ========== Code block ========== */
+  /* Big centered message slide */
+  .big-msg h1 {
+    font-size: clamp(24px, 4vw + .8rem, 56px);
+    max-width: 900px;
+  }
+  .big-msg p {
+    font-size: clamp(15px, .8vw + 12.5px, 20px);
+    max-width: 640px;
+    margin-top: 10px;
+  }
+
   .codeblock {
     background: #0a0b0e;
     border: 1px solid var(--border);
     border-radius: 10px;
-    padding: 18px 20px;
+    padding: 20px 22px;
     font-family: var(--mono);
     font-size: clamp(11.5px, .35vw + 10.5px, 13.5px);
-    line-height: 1.7;
+    line-height: 1.75;
     color: var(--fg-2);
     overflow-x: auto;
-    margin-top: 24px;
+    margin-top: 26px;
     white-space: pre;
   }
   .codeblock .c { color: var(--fg-3); font-style: italic; }
@@ -327,25 +323,62 @@
   .codeblock .s { color: #f0c674; }
   .codeblock .ok { color: var(--success); }
 
-  /* ========== Feature list ========== */
-  .feat {
+  /* Two columns */
+  .two-col {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
-    gap: 12px;
-    margin-top: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--gap);
+    margin-top: 26px;
   }
-  .feat-item {
+
+  /* Stack table simple */
+  .stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 12px;
+    margin-top: 26px;
+  }
+  .stack-item {
     padding: 14px 16px;
     background: var(--bg-2);
     border: 1px solid var(--border);
     border-radius: 10px;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
     min-width: 0;
   }
-  .feat-item .icon {
-    width: 32px; height: 32px;
+  .stack-item .label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 6px;
+  }
+  .stack-item .value {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--fg);
+    font-weight: 500;
+    overflow-wrap: break-word;
+  }
+
+  /* Features: minimal, one line each */
+  .feat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 26px;
+  }
+  .feat-line {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .feat-line .icon {
+    width: 34px; height: 34px;
     border-radius: 8px;
     background: rgba(124,92,252,.12);
     border: 1px solid rgba(124,92,252,.2);
@@ -355,16 +388,16 @@
     font-size: 15px;
     flex-shrink: 0;
   }
-  .feat-item .body { min-width: 0; }
-  .feat-item h3 { font-size: 13.5px; margin-bottom: 3px; }
-  .feat-item p { font-size: 12px; line-height: 1.5; }
+  .feat-line .body { min-width: 0; flex: 1; }
+  .feat-line h3 { font-size: 14px; margin-bottom: 3px; }
+  .feat-line p { font-size: var(--small); line-height: 1.5; }
 
-  /* ========== Comparación técnica ========== */
+  /* Compare */
   .cmp {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
     gap: var(--gap);
-    margin-top: 28px;
+    margin-top: 26px;
   }
   .cmp-col {
     padding: 20px;
@@ -413,36 +446,6 @@
   .cmp-list .mark.yes { color: var(--success); }
   .cmp-col.ours .cmp-list li { color: var(--fg); }
 
-  /* ========== Stack técnico ========== */
-  .stack {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-    gap: 12px;
-    margin-top: 24px;
-  }
-  .stack-item {
-    padding: 16px;
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    min-width: 0;
-  }
-  .stack-item .label {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--fg-3);
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    margin-bottom: 6px;
-  }
-  .stack-item .value {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--fg);
-    font-weight: 500;
-  }
-
-  /* ========== Estado ========== */
   .live-badge {
     display: inline-flex;
     align-items: center;
@@ -470,31 +473,6 @@
     100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); }
   }
 
-  .pipeline {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
-    gap: var(--gap);
-    margin-top: 24px;
-  }
-  .pipe-step {
-    padding: 18px;
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    min-width: 0;
-  }
-  .pipe-num {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--primary-2);
-    font-weight: 600;
-    letter-spacing: .1em;
-    margin-bottom: 8px;
-  }
-  .pipe-step h3 { font-size: 14px; margin-bottom: 6px; }
-  .pipe-step p { font-size: var(--small); }
-
-  /* ========== Cierre ========== */
   .final { text-align: center; }
   .final .slide-inner {
     display: flex;
@@ -532,11 +510,9 @@
     color: var(--fg-3);
   }
 
-  /* ========== Media queries ========== */
   @media (max-width: 640px) {
     :root { --pad-x: 18px; --pad-y: 18px; }
     .brand { display: none; }
-    .grid, .flow, .feat, .cmp, .pipeline, .stack { margin-top: 20px; }
   }
   @media (max-width: 400px) {
     :root { --pad-x: 14px; --pad-y: 14px; }
@@ -546,7 +522,6 @@
     :root { --pad-y: 12px; --pad-x: 24px; }
     h1 { margin-bottom: 8px; }
     h2 { margin-bottom: 10px; }
-    .grid, .flow, .feat, .cmp, .pipeline, .stack { margin-top: 14px; }
   }
   @media (prefers-reduced-motion: reduce) {
     .slide { transition: opacity .15s; transform: none; }
@@ -562,121 +537,197 @@
 
 <div class="deck" id="deck">
 
-  <!-- 1. QUÉ ES -->
+  <!-- 01 — Portada -->
   <section class="slide cover active">
     <div class="slide-inner">
       <span class="tag">Editor visual · GitHub Pages</span>
       <h1>
-        Edita sitios estáticos sin tocar el código.<br>
-        Los cambios se guardan como commits.
+        Edita sitios estáticos<br>sin tocar el código.
       </h1>
       <p class="lead">
-        OpenCanvas Studio es una app web que se conecta a un repo de GitHub,
-        renderiza el sitio en un iframe editable, y hace commit de los cambios
-        usando la API de GitHub.
+        Los cambios se guardan directo como commits en tu repo.
       </p>
-      <div class="def">
-        <p>
-          <strong>En una frase:</strong> un editor visual para sitios estáticos alojados en GitHub Pages
-          que genera commits automáticos — sin CMS, sin base de datos, sin backend propio.
-        </p>
-      </div>
     </div>
   </section>
 
-  <!-- 2. EL PROBLEMA -->
+  <!-- 02 — Qué es -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">El problema</div>
-      <h2>Editar contenido en un sitio estático es incómodo.</h2>
-      <p>Actualmente, cambiar un texto o una imagen en un sitio en GitHub Pages implica:</p>
+      <div class="eyebrow">Qué es</div>
+      <h2>Un editor visual para sitios estáticos.</h2>
+      <div class="def">
+        <p>
+          <strong>En una frase:</strong> una app web que se conecta a un repo de GitHub,
+          renderiza el sitio en un iframe editable, y hace commit de los cambios
+          usando la API de GitHub.
+        </p>
+      </div>
+      <p class="muted" style="margin-top: 20px; font-size: var(--small);">
+        Sin CMS. Sin base de datos. Sin backend propio.
+      </p>
+    </div>
+  </section>
 
-      <div class="grid grid-2">
+  <!-- 03 — El problema (dev) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">El problema · Parte 1</div>
+      <h2>Editar contenido en un sitio estático es incómodo.</h2>
+      <ul class="list" style="margin-top: 20px;">
+        <li>Clonar el repo o abrir el editor web de GitHub.</li>
+        <li>Buscar el archivo HTML correcto entre todos.</li>
+        <li>Encontrar el bloque dentro del markup.</li>
+        <li>Editar a mano con riesgo de romper el layout.</li>
+        <li>Commit, push y esperar el build de Pages.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 04 — El problema (dev) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">El problema · Parte 2</div>
+      <h2>Y esto genera fricción en ambos lados.</h2>
+      <div class="two-col">
         <div class="card">
-          <h3 class="red">Flujo actual del cliente</h3>
+          <h3 class="red">Para el dev</h3>
           <ul class="list">
-            <li>Clonar el repo o abrir el editor en GitHub.</li>
-            <li>Buscar el archivo HTML correcto.</li>
-            <li>Encontrar el bloque dentro del markup.</li>
-            <li>Editar a mano con riesgo de romper el layout.</li>
-            <li>Hacer commit y esperar el build de Pages.</li>
+            <li>Tickets por cambios triviales.</li>
+            <li>Interrupciones constantes.</li>
+            <li>No puede dar acceso al repo sin riesgo.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="accent">Consecuencia</h3>
+          <h3 class="red">Para el cliente</h3>
           <ul class="list">
-            <li>El cliente no puede editar su propio sitio.</li>
-            <li>El desarrollador recibe tickets por cambios triviales.</li>
-            <li>Alternativas: instalar un CMS (más infra) o dar acceso al repo (riesgo).</li>
-            <li>Mantener WordPress / Strapi / similar para sitios que son solo HTML.</li>
+            <li>No puede editar su propio sitio.</li>
+            <li>Depende de alguien para una coma.</li>
+            <li>Alternativa: instalar un CMS completo.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 3. CÓMO FUNCIONA -->
+  <!-- 05 — Cómo funciona (visión general) -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Cómo funciona</div>
       <h2>GitHub API + iframe editable + commit automático.</h2>
-      <p>
-        No hay backend propio. El navegador habla directo con la API de GitHub usando
-        un Personal Access Token que el usuario ingresa una vez.
+      <p class="lead">
+        No hay backend propio. El navegador habla directo con la API de GitHub
+        usando un Personal Access Token que el usuario ingresa una vez.
       </p>
-
       <div class="flow">
         <div class="flow-step">
-          <div class="flow-num">PASO 01</div>
+          <div class="flow-num">01</div>
           <h3>Auth</h3>
-          <p>El usuario pega un <code>PAT</code>. Se guarda en <code>localStorage</code>. Se valida contra <code>GET /repos/:owner/:repo</code>.</p>
+          <p>PAT guardado en localStorage.</p>
         </div>
         <div class="flow-step">
-          <div class="flow-num">PASO 02</div>
+          <div class="flow-num">02</div>
           <h3>Fetch</h3>
-          <p>Se listan los HTML del repo con <code>GET /git/trees/:branch?recursive=1</code> y se traen los contenidos con <code>GET /contents/:path</code>.</p>
+          <p>Se traen los HTML del repo.</p>
         </div>
         <div class="flow-step">
-          <div class="flow-num">PASO 03</div>
+          <div class="flow-num">03</div>
           <h3>Render</h3>
-          <p>El HTML se inyecta en un <code>&lt;iframe&gt;</code> con un <code>&lt;base&gt;</code> que apunta a <code>usuario.github.io/repo/</code> para resolver CSS e imágenes.</p>
+          <p>El HTML vive en un iframe.</p>
         </div>
         <div class="flow-step">
-          <div class="flow-num">PASO 04</div>
+          <div class="flow-num">04</div>
           <h3>Edit</h3>
-          <p>El usuario mueve, redimensiona y edita elementos. Los cambios se aplican al DOM del iframe en tiempo real.</p>
+          <p>Se edita el DOM en vivo.</p>
         </div>
         <div class="flow-step">
-          <div class="flow-num">PASO 05</div>
+          <div class="flow-num">05</div>
           <h3>Commit</h3>
-          <p>Al guardar, se serializa el DOM, se limpian inyecciones, y se hace <code>PUT /contents/:path</code> con base64 + sha.</p>
+          <p>PUT a la API con el nuevo HTML.</p>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- 06 — Auth + Fetch -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Cómo funciona · Detalle</div>
+      <h2>Auth y fetch.</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3 class="accent">Auth</h3>
+          <ul class="list">
+            <li>El usuario pega un PAT con scope <code>repo</code>.</li>
+            <li>Se guarda en <code>localStorage</code>.</li>
+            <li>Se valida con <code>GET /repos/:owner/:repo</code>.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="accent">Fetch</h3>
+          <ul class="list">
+            <li>Listado de HTML con <code>GET /git/trees/:branch?recursive=1</code>.</li>
+            <li>Contenido de cada archivo con <code>GET /contents/:path</code>.</li>
+            <li>Base64 decodificado en el navegador.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — Render + Edit -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Cómo funciona · Detalle</div>
+      <h2>Render y edición.</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3 class="accent">Render</h3>
+          <ul class="list">
+            <li>El HTML se inyecta en un <code>&lt;iframe&gt;</code>.</li>
+            <li>Un <code>&lt;base&gt;</code> apunta a <code>usuario.github.io/repo/</code>.</li>
+            <li>Así el CSS, fuentes e imágenes cargan reales.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="accent">Edit</h3>
+          <ul class="list">
+            <li>Se manipula el DOM del iframe directamente.</li>
+            <li>Cambios en vivo, sin recargar.</li>
+            <li>Se limpian las inyecciones del editor antes de guardar.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 — Commit (código) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Cómo funciona · Commit</div>
+      <h2>Un único endpoint hace todo el trabajo.</h2>
       <div class="codeblock">
-<span class="c">// El commit se hace con la API REST, sin backend</span>
+<span class="c">// Un solo PUT crea el commit</span>
 <span class="k">PUT</span> /repos/<span class="s">{owner}</span>/<span class="s">{repo}</span>/contents/<span class="s">{path}</span>
 {
   <span class="k">"message"</span>: <span class="s">"Update index.html via OpenCanvas Studio"</span>,
   <span class="k">"content"</span>: <span class="s">"&lt;base64 del HTML editado&gt;"</span>,
-  <span class="k">"branch"</span>: <span class="s">"main"</span>,
-  <span class="k">"sha"</span>:    <span class="s">"&lt;sha actual del archivo&gt;"</span>
+  <span class="k">"branch"</span>:  <span class="s">"main"</span>,
+  <span class="k">"sha"</span>:     <span class="s">"&lt;sha actual del archivo&gt;"</span>
 }
+
 <span class="ok">→ 200 OK · nuevo commit en el repo · GitHub Pages reconstruye solo</span>
       </div>
     </div>
   </section>
 
-  <!-- 4. STACK -->
+  <!-- 09 — Stack -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Stack técnico</div>
-      <h2>Sin frameworks, sin dependencias, sin build.</h2>
+      <h2>4 archivos. Vanilla JS. Sin build.</h2>
       <p>
-        Es una SPA estática de 4 archivos que corre 100% en el navegador.
-        Se puede alojar en el mismo GitHub Pages.
+        Corre 100% en el navegador. Se puede alojar en el mismo GitHub Pages.
       </p>
-
       <div class="stack">
         <div class="stack-item">
           <div class="label">Runtime</div>
@@ -714,153 +765,181 @@
     </div>
   </section>
 
-  <!-- 5. FEATURES -->
+  <!-- 10 — Feature: edición visual -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Funcionalidades</div>
-      <h2>Qué hace hoy.</h2>
-
-      <div class="feat">
-        <div class="feat-item">
+      <div class="eyebrow">Qué hace hoy · 1 de 4</div>
+      <h2>Edición visual directa.</h2>
+      <div class="feat-list">
+        <div class="feat-line">
           <div class="icon">↔</div>
           <div class="body">
             <h3>Mover elementos</h3>
-            <p>Drag con umbral de 3px, flechas del teclado para ajuste fino.</p>
+            <p>Drag con umbral de 3px. Flechas del teclado para ajuste fino (Shift = 10px).</p>
           </div>
         </div>
-        <div class="feat-item">
+        <div class="feat-line">
           <div class="icon">⤡</div>
           <div class="body">
             <h3>Redimensionar</h3>
-            <p>8 handles por elemento con el cursor correcto por dirección.</p>
+            <p>8 handles por elemento. Cursor correcto por dirección. Mínimo 8×8px.</p>
           </div>
         </div>
-        <div class="feat-item">
+        <div class="feat-line">
           <div class="icon">✎</div>
           <div class="body">
-            <h3>Edición de texto</h3>
-            <p><code>designMode</code> activado, el caret cae donde el usuario hace clic.</p>
+            <h3>Editar texto</h3>
+            <p><code>designMode = on</code>. El caret cae donde el usuario hace clic.</p>
           </div>
         </div>
-        <div class="feat-item">
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 — Feature: estilos -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Qué hace hoy · 2 de 4</div>
+      <h2>Estilos y animaciones.</h2>
+      <div class="feat-list">
+        <div class="feat-line">
           <div class="icon">🎨</div>
           <div class="body">
             <h3>Degradados multi-stop</h3>
-            <p>Lineal, radial y cónico. Stops ilimitados con posición ajustable.</p>
+            <p>Lineal, radial y cónico. Stops ilimitados con posición ajustable. 10 presets incluidos.</p>
           </div>
         </div>
-        <div class="feat-item">
+        <div class="feat-line">
+          <div class="icon">🎬</div>
+          <div class="body">
+            <h3>Animaciones de entrada</h3>
+            <p>10 presets aplicados por clase + CSS variables. Se reproducen en el sitio final, no en el editor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 — Feature: estructura -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Qué hace hoy · 3 de 4</div>
+      <h2>Estructura del sitio.</h2>
+      <div class="feat-list">
+        <div class="feat-line">
           <div class="icon">≡</div>
           <div class="body">
             <h3>Editor de menús</h3>
             <p>Detecta header y footer. Edita submenús anidados sin tocar HTML.</p>
           </div>
         </div>
-        <div class="feat-item">
+        <div class="feat-line">
           <div class="icon">📄</div>
           <div class="body">
             <h3>Gestión de páginas</h3>
-            <p>Crea páginas nuevas y las añade al menú de todas las demás.</p>
-          </div>
-        </div>
-        <div class="feat-item">
-          <div class="icon">↶</div>
-          <div class="body">
-            <h3>Undo / Redo</h3>
-            <p>Ctrl+Z / Ctrl+Y con historial de 60 snapshots del DOM.</p>
-          </div>
-        </div>
-        <div class="feat-item">
-          <div class="icon">🎬</div>
-          <div class="body">
-            <h3>Animaciones</h3>
-            <p>10 presets de entrada aplicados por clase + CSS variables.</p>
-          </div>
-        </div>
-        <div class="feat-item">
-          <div class="icon">📱</div>
-          <div class="body">
-            <h3>Vista responsive</h3>
-            <p>Toggle escritorio / tablet / móvil en el canvas.</p>
+            <p>Crea páginas nuevas y las añade al menú de todas las demás automáticamente.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 6. DIFERENCIA CON OTRAS HERRAMIENTAS -->
+  <!-- 13 — Feature: UX -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Qué hace hoy · 4 de 4</div>
+      <h2>Experiencia de uso.</h2>
+      <div class="feat-list">
+        <div class="feat-line">
+          <div class="icon">↶</div>
+          <div class="body">
+            <h3>Undo / Redo</h3>
+            <p>Ctrl+Z y Ctrl+Y. Historial de 60 snapshots del DOM.</p>
+          </div>
+        </div>
+        <div class="feat-line">
+          <div class="icon">⚡</div>
+          <div class="body">
+            <h3>Sesión persistente</h3>
+            <p>Se autentica una vez. La próxima visita entra directo al editor.</p>
+          </div>
+        </div>
+        <div class="feat-line">
+          <div class="icon">📱</div>
+          <div class="body">
+            <h3>Vista responsive</h3>
+            <p>Toggle escritorio / tablet / móvil para previsualizar el layout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 — Diferencia -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Diferencia</div>
       <h2>Edición visual sobre Git, sin CMS.</h2>
-
       <div class="cmp">
         <div class="cmp-col alt">
           <div class="cmp-head">CMS Git-based (Tina, Decap, Pages CMS)</div>
           <ul class="cmp-list">
-            <li><span class="mark no">✕</span> Edición basada en formularios sobre front-matter, no visual</li>
-            <li><span class="mark no">✕</span> Requieren configuración de schema por cada campo</li>
-            <li><span class="mark no">✕</span> OAuth con backend o servicio externo para GitHub Pages</li>
-            <li><span class="mark no">✕</span> No permiten mover ni redimensionar elementos</li>
+            <li><span class="mark no">✕</span> Edición por formularios, no visual</li>
+            <li><span class="mark no">✕</span> Schema por cada campo</li>
+            <li><span class="mark no">✕</span> Requieren OAuth con backend</li>
+            <li><span class="mark no">✕</span> No mueven ni redimensionan</li>
             <li><span class="mark yes">✓</span> Multi-usuario y flujo editorial</li>
-            <li><span class="mark yes">✓</span> Formularios estructurados</li>
           </ul>
         </div>
         <div class="cmp-col ours">
           <div class="cmp-head">OpenCanvas Studio</div>
           <ul class="cmp-list">
-            <li><span class="mark yes">✓</span> Edición directa sobre el HTML renderizado, sin schemas</li>
-            <li><span class="mark yes">✓</span> Drag, resize y edición in-place como en Figma</li>
-            <li><span class="mark yes">✓</span> Sin backend: PAT directo a la API de GitHub</li>
-            <li><span class="mark yes">✓</span> Funciona con cualquier HTML existente, sin migración</li>
-            <li><span class="mark no">✕</span> Un solo usuario por sesión</li>
-            <li><span class="mark no">✕</span> No hay flujo editorial ni revisión</li>
+            <li><span class="mark yes">✓</span> Edición directa sobre el HTML renderizado</li>
+            <li><span class="mark yes">✓</span> Sin schemas ni configuración</li>
+            <li><span class="mark yes">✓</span> Sin backend: PAT directo a la API</li>
+            <li><span class="mark yes">✓</span> Funciona con cualquier HTML existente</li>
+            <li><span class="mark no">✕</span> Un usuario por sesión</li>
           </ul>
         </div>
       </div>
-
-      <p style="margin-top: 24px; color: var(--fg-3); font-size: var(--small);">
+      <p class="muted" style="margin-top: 22px; font-size: var(--small);">
         No compite con un CMS. Es una capa de edición visual para sitios que no necesitan uno.
       </p>
     </div>
   </section>
 
-  <!-- 7. CASOS DE USO -->
+  <!-- 15 — Casos de uso -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Casos de uso</div>
       <h2>Dónde tiene sentido.</h2>
-
-      <div class="grid grid-3">
+      <div class="two-col" style="grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));">
         <div class="card">
           <h3 class="accent">Agencias y freelancers</h3>
           <ul class="list">
-            <li>Entregar el sitio al cliente con editor incluido.</li>
-            <li>Evitar tickets por cambios de texto o imágenes.</li>
-            <li>No instalar WordPress solo para que el cliente edite.</li>
+            <li>Entregar el sitio con editor incluido.</li>
+            <li>Evitar tickets por cambios triviales.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="accent">Landings y sitios one-page</h3>
+          <h3 class="accent">Landings y one-pagers</h3>
           <ul class="list">
             <li>Sin CMS completo para una sola página.</li>
-            <li>Cambios frecuentes: precios, textos, banners.</li>
-            <li>El cliente edita sin tocar el repo.</li>
+            <li>Cambios frecuentes de textos y precios.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="accent">Portafolios y sitios personales</h3>
+          <h3 class="accent">Portafolios personales</h3>
           <ul class="list">
-            <li>Actualizar proyectos sin abrir VS Code.</li>
-            <li>Editar desde el navegador en cualquier equipo.</li>
-            <li>Sin instalar nada, sin build, sin CLI.</li>
+            <li>Actualizar proyectos desde el navegador.</li>
+            <li>Sin instalar nada, sin CLI.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 8. ESTADO -->
+  <!-- 16 — Estado -->
   <section class="slide">
     <div class="slide-inner">
       <div class="live-badge">
@@ -869,38 +948,36 @@
       </div>
       <div class="eyebrow">Estado del proyecto</div>
       <h2>Funciona hoy. Sigue evolucionando.</h2>
-      <p>
-        La herramienta está operativa. El roadmap no es fijo: se alimenta de lo que
-        los usuarios reportan. Bugs, sugerencias o features que faltan entran al pipeline.
+      <p style="margin-bottom: 8px;">
+        El roadmap no es fijo. Se alimenta de lo que se reporta.
       </p>
-
-      <div class="pipeline">
-        <div class="pipe-step">
-          <div class="pipe-num">REPORTE</div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">REPORTE</div>
           <h3>Llega un bug o sugerencia</h3>
-          <p>Del usuario, del repo, de quien sea. Sin burocracia ni formularios.</p>
+          <p>Del usuario, del repo, de quien sea.</p>
         </div>
-        <div class="pipe-step">
-          <div class="pipe-num">TRIAGE</div>
+        <div class="flow-step">
+          <div class="flow-num">TRIAGE</div>
           <h3>Entra al radar</h3>
-          <p>Se evalúa y se prioriza. No hay promesas de fechas.</p>
+          <p>Se evalúa y se prioriza. Sin promesas de fecha.</p>
         </div>
-        <div class="pipe-step">
-          <div class="pipe-num">RELEASE</div>
+        <div class="flow-step">
+          <div class="flow-num">RELEASE</div>
           <h3>Se lanza</h3>
-          <p>Sale al aire cuando está listo. Sin versiones ni ciclos largos.</p>
+          <p>Sale al aire cuando está listo.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 9. CIERRE -->
+  <!-- 17 — Cierre -->
   <section class="slide final">
     <div class="slide-inner">
       <div class="eyebrow">Probar</div>
       <h1>Está corriendo acá.</h1>
       <p class="lead" style="max-width: 560px;">
-        Abrí la app, pegá un Personal Access Token con scope <code>repo</code>
+        Abrí la app, pegá un PAT con scope <code>repo</code>
         y conectá cualquier repo con GitHub Pages activado.
       </p>
       <a class="cta" href="https://keyworkspace.github.io/opencanvas-studio/" target="_blank" rel="noopener">
@@ -913,7 +990,7 @@
 </div>
 
 <div class="counter">
-  <span class="current" id="cur">01</span> / <span id="total">09</span>
+  <span class="current" id="cur">01</span> / <span id="total">17</span>
 </div>
 
 <div class="nav">
