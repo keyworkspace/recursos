@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>OpenCanvas Studio — Overview técnico</title>
+<title>OpenCanvas Studio — Presentación</title>
 <style>
   :root {
     --bg: #0b0c10;
@@ -17,7 +17,6 @@
     --success: #4ade80;
     --danger: #f87171;
     --border: rgba(255,255,255,.09);
-    --border-2: rgba(255,255,255,.14);
     --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
     --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -199,7 +198,6 @@
     overflow-wrap: break-word;
   }
   .lead { font-size: clamp(15px, .8vw + 12.5px, 20px); line-height: 1.55; color: var(--fg-2); }
-  .mono { font-family: var(--mono); font-size: .92em; }
   .accent { color: var(--primary-2); }
   .cyan { color: var(--accent); }
   .green { color: var(--success); }
@@ -243,7 +241,6 @@
     font-family: var(--mono);
   }
 
-  /* Cover */
   .cover .tag {
     display: inline-block;
     font-family: var(--mono);
@@ -269,7 +266,6 @@
   .def p { color: var(--fg); font-size: var(--body); }
   .def strong { color: var(--primary-2); }
 
-  /* Simple step sequence (una sola fila con flechas) */
   .flow {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
@@ -294,15 +290,11 @@
   .flow-step h3 { font-size: 14.5px; margin-bottom: 6px; }
   .flow-step p { font-size: var(--small); line-height: 1.5; }
 
-  /* Big centered message slide */
-  .big-msg h1 {
-    font-size: clamp(24px, 4vw + .8rem, 56px);
-    max-width: 900px;
-  }
-  .big-msg p {
-    font-size: clamp(15px, .8vw + 12.5px, 20px);
-    max-width: 640px;
-    margin-top: 10px;
+  .two-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    gap: var(--gap);
+    margin-top: 26px;
   }
 
   .codeblock {
@@ -323,45 +315,6 @@
   .codeblock .s { color: #f0c674; }
   .codeblock .ok { color: var(--success); }
 
-  /* Two columns */
-  .two-col {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    gap: var(--gap);
-    margin-top: 26px;
-  }
-
-  /* Stack table simple */
-  .stack {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
-    gap: 12px;
-    margin-top: 26px;
-  }
-  .stack-item {
-    padding: 14px 16px;
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    min-width: 0;
-  }
-  .stack-item .label {
-    font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--fg-3);
-    text-transform: uppercase;
-    letter-spacing: .1em;
-    margin-bottom: 6px;
-  }
-  .stack-item .value {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--fg);
-    font-weight: 500;
-    overflow-wrap: break-word;
-  }
-
-  /* Features: minimal, one line each */
   .feat-list {
     display: flex;
     flex-direction: column;
@@ -392,7 +345,6 @@
   .feat-line h3 { font-size: 14px; margin-bottom: 3px; }
   .feat-line p { font-size: var(--small); line-height: 1.5; }
 
-  /* Compare */
   .cmp {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
@@ -445,6 +397,33 @@
   .cmp-list .mark.no { color: var(--danger); }
   .cmp-list .mark.yes { color: var(--success); }
   .cmp-col.ours .cmp-list li { color: var(--fg); }
+
+  .stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 12px;
+    margin-top: 26px;
+  }
+  .stack-item {
+    padding: 14px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    min-width: 0;
+  }
+  .stack-item .label {
+    font-size: 10.5px;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 6px;
+  }
+  .stack-item .value {
+    font-size: 14px;
+    color: var(--fg);
+    font-weight: 500;
+    overflow-wrap: break-word;
+  }
 
   .live-badge {
     display: inline-flex;
@@ -540,12 +519,13 @@
   <!-- 01 — Portada -->
   <section class="slide cover active">
     <div class="slide-inner">
-      <span class="tag">Editor visual · GitHub Pages</span>
+      <span class="tag">Editor visual · Sitios en GitHub Pages</span>
       <h1>
-        Edita sitios estáticos<br>sin tocar el código.
+        Edita tu web<br>sin tocar el código.
       </h1>
       <p class="lead">
-        Los cambios se guardan directo como commits en tu repo.
+        Mueves, escribes, cambias colores. Y cuando guardas,
+        se sube solo a GitHub.
       </p>
     </div>
   </section>
@@ -554,392 +534,413 @@
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Qué es</div>
-      <h2>Un editor visual para sitios estáticos.</h2>
+      <h2>Una herramienta para editar tu web visualmente.</h2>
       <div class="def">
         <p>
-          <strong>En una frase:</strong> una app web que se conecta a un repo de GitHub,
-          renderiza el sitio en un iframe editable, y hace commit de los cambios
-          usando la API de GitHub.
+          <strong>En una frase:</strong> abres la herramienta en el navegador,
+          le das acceso a tu repositorio, y tu web aparece ahí para que la edites
+          como si fuera un programa de diseño.
         </p>
       </div>
       <p class="muted" style="margin-top: 20px; font-size: var(--small);">
-        Sin CMS. Sin base de datos. Sin backend propio.
+        Sin instalar nada. Sin programas externos. Todo en el navegador.
       </p>
     </div>
   </section>
 
-  <!-- 03 — El problema (dev) -->
+  <!-- 03 — El problema -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">El problema · Parte 1</div>
-      <h2>Editar contenido en un sitio estático es incómodo.</h2>
+      <h2>Editar una web estática es más difícil de lo que debería.</h2>
       <ul class="list" style="margin-top: 20px;">
-        <li>Clonar el repo o abrir el editor web de GitHub.</li>
-        <li>Buscar el archivo HTML correcto entre todos.</li>
-        <li>Encontrar el bloque dentro del markup.</li>
-        <li>Editar a mano con riesgo de romper el layout.</li>
-        <li>Commit, push y esperar el build de Pages.</li>
+        <li>Tienes que abrir el editor de código.</li>
+        <li>Buscar el archivo correcto entre todos.</li>
+        <li>Encontrar la parte exacta que quieres cambiar.</li>
+        <li>Escribir a mano con cuidado de no romper nada.</li>
+        <li>Subir el cambio y esperar a que se actualice.</li>
+      </ul>
+      <p class="muted" style="margin-top: 22px; font-size: var(--small);">
+        Todo eso por cambiar una palabra.
+      </p>
+    </div>
+  </section>
+
+  <!-- 04 — A quién afecta -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">El problema · Parte 2</div>
+      <h2>Y esto afecta a los dos lados.</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3 class="red">Al desarrollador</h3>
+          <ul class="list">
+            <li>Le llegan mensajes por cambios pequeños.</li>
+            <li>Tiene que parar lo que hace para atenderlos.</li>
+            <li>No puede dar acceso al repositorio sin riesgos.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="red">A quien usa la web</h3>
+          <ul class="list">
+            <li>No puede cambiar su propio sitio.</li>
+            <li>Depende de alguien para todo.</li>
+            <li>Su única alternativa es montar algo más complejo.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 — Cómo funciona (overview) -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Cómo funciona</div>
+      <h2>Cinco pasos. Nada más.</h2>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="flow-num">01</div>
+          <h3>Conectar</h3>
+          <p>Le das acceso a tu repositorio.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">02</div>
+          <h3>Traer</h3>
+          <p>Se leen las páginas del sitio.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">03</div>
+          <h3>Mostrar</h3>
+          <p>Tu web aparece tal cual es.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">04</div>
+          <h3>Editar</h3>
+          <p>Mueves y cambias lo que quieras.</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-num">05</div>
+          <h3>Guardar</h3>
+          <p>Los cambios se suben a GitHub.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 — Paso 1: Conectar -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Paso 1</div>
+      <h2>Conectar con tu repositorio.</h2>
+      <p class="lead" style="margin-bottom: 24px;">
+        Le das a la herramienta una llave de acceso a tu GitHub.
+        Es como una contraseña temporal que solo sirve para ese repositorio.
+      </p>
+      <div class="card">
+        <ul class="list">
+          <li>La llave se guarda solo en tu navegador, no en un servidor.</li>
+          <li>La próxima vez que entres, ya estás dentro. No hay que repetirla.</li>
+          <li>Si cierras sesión, se borra.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 — Paso 2: Traer archivos -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Paso 2</div>
+      <h2>Se traen las páginas de tu web.</h2>
+      <p class="lead">
+        La herramienta lee tu repositorio y muestra una lista con todas las páginas
+        que tiene tu sitio. Solo las páginas visibles, nada de configuración ni código interno.
+      </p>
+    </div>
+  </section>
+
+  <!-- 08 — Paso 3: Mostrar la web -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Paso 3</div>
+      <h2>Tu web aparece tal cual es.</h2>
+      <p class="lead">
+        La ves con sus colores, sus fuentes, sus imágenes y sus menús.
+        Exactamente como se ve en internet.
+      </p>
+      <p style="margin-top: 18px;">
+        Lo único distinto es que ahora puedes tocarla.
+      </p>
+    </div>
+  </section>
+
+  <!-- 09 — Paso 4: Editar -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Paso 4</div>
+      <h2>Editas como si fuera un programa de diseño.</h2>
+      <ul class="list" style="margin-top: 20px;">
+        <li>Haces clic en algo y se selecciona.</li>
+        <li>Lo arrastras y se mueve.</li>
+        <li>Tiras de las esquinas y cambia de tamaño.</li>
+        <li>Haces doble clic en un texto y lo escribes.</li>
+        <li>Cambias colores, tamaños y animaciones desde un panel.</li>
       </ul>
     </div>
   </section>
 
-  <!-- 04 — El problema (dev) -->
+  <!-- 10 — Paso 5: Guardar -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">El problema · Parte 2</div>
-      <h2>Y esto genera fricción en ambos lados.</h2>
-      <div class="two-col">
-        <div class="card">
-          <h3 class="red">Para el dev</h3>
-          <ul class="list">
-            <li>Tickets por cambios triviales.</li>
-            <li>Interrupciones constantes.</li>
-            <li>No puede dar acceso al repo sin riesgo.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 class="red">Para el cliente</h3>
-          <ul class="list">
-            <li>No puede editar su propio sitio.</li>
-            <li>Depende de alguien para una coma.</li>
-            <li>Alternativa: instalar un CMS completo.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 05 — Cómo funciona (visión general) -->
-  <section class="slide">
-    <div class="slide-inner">
-      <div class="eyebrow">Cómo funciona</div>
-      <h2>GitHub API + iframe editable + commit automático.</h2>
-      <p class="lead">
-        No hay backend propio. El navegador habla directo con la API de GitHub
-        usando un Personal Access Token que el usuario ingresa una vez.
+      <div class="eyebrow">Paso 5</div>
+      <h2>Guardas y ya está en internet.</h2>
+      <p class="lead" style="margin-bottom: 24px;">
+        La herramienta sube los cambios a tu repositorio automáticamente.
+        No tienes que hacer nada más. En segundos, tu web está actualizada.
       </p>
-      <div class="flow">
-        <div class="flow-step">
-          <div class="flow-num">01</div>
-          <h3>Auth</h3>
-          <p>PAT guardado en localStorage.</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">02</div>
-          <h3>Fetch</h3>
-          <p>Se traen los HTML del repo.</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">03</div>
-          <h3>Render</h3>
-          <p>El HTML vive en un iframe.</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">04</div>
-          <h3>Edit</h3>
-          <p>Se edita el DOM en vivo.</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-num">05</div>
-          <h3>Commit</h3>
-          <p>PUT a la API con el nuevo HTML.</p>
-        </div>
+      <div class="card">
+        <ul class="list">
+          <li>Cada cambio que guardas queda como una versión en tu GitHub.</li>
+          <li>Si algo sale mal, puedes volver a la versión anterior.</li>
+          <li>No se pierde historial de nada.</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 06 — Auth + Fetch -->
+  <!-- 11 — Cómo se ve el guardado por dentro -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Cómo funciona · Detalle</div>
-      <h2>Auth y fetch.</h2>
-      <div class="two-col">
-        <div class="card">
-          <h3 class="accent">Auth</h3>
-          <ul class="list">
-            <li>El usuario pega un PAT con scope <code>repo</code>.</li>
-            <li>Se guarda en <code>localStorage</code>.</li>
-            <li>Se valida con <code>GET /repos/:owner/:repo</code>.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 class="accent">Fetch</h3>
-          <ul class="list">
-            <li>Listado de HTML con <code>GET /git/trees/:branch?recursive=1</code>.</li>
-            <li>Contenido de cada archivo con <code>GET /contents/:path</code>.</li>
-            <li>Base64 decodificado en el navegador.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 — Render + Edit -->
-  <section class="slide">
-    <div class="slide-inner">
-      <div class="eyebrow">Cómo funciona · Detalle</div>
-      <h2>Render y edición.</h2>
-      <div class="two-col">
-        <div class="card">
-          <h3 class="accent">Render</h3>
-          <ul class="list">
-            <li>El HTML se inyecta en un <code>&lt;iframe&gt;</code>.</li>
-            <li>Un <code>&lt;base&gt;</code> apunta a <code>usuario.github.io/repo/</code>.</li>
-            <li>Así el CSS, fuentes e imágenes cargan reales.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 class="accent">Edit</h3>
-          <ul class="list">
-            <li>Se manipula el DOM del iframe directamente.</li>
-            <li>Cambios en vivo, sin recargar.</li>
-            <li>Se limpian las inyecciones del editor antes de guardar.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 08 — Commit (código) -->
-  <section class="slide">
-    <div class="slide-inner">
-      <div class="eyebrow">Cómo funciona · Commit</div>
-      <h2>Un único endpoint hace todo el trabajo.</h2>
+      <div class="eyebrow">Guardar · Por dentro</div>
+      <h2>Un solo envío hace todo.</h2>
+      <p>
+        La herramienta le manda a GitHub el contenido nuevo de la página
+        y GitHub se encarga del resto.
+      </p>
       <div class="codeblock">
-<span class="c">// Un solo PUT crea el commit</span>
-<span class="k">PUT</span> /repos/<span class="s">{owner}</span>/<span class="s">{repo}</span>/contents/<span class="s">{path}</span>
+<span class="c">// Así viaja tu cambio a GitHub</span>
+<span class="k">PUT</span> /repos/<span class="s">{usuario}</span>/<span class="s">{repo}</span>/contents/<span class="s">{página}</span>
 {
   <span class="k">"message"</span>: <span class="s">"Update index.html via OpenCanvas Studio"</span>,
-  <span class="k">"content"</span>: <span class="s">"&lt;base64 del HTML editado&gt;"</span>,
-  <span class="k">"branch"</span>:  <span class="s">"main"</span>,
-  <span class="k">"sha"</span>:     <span class="s">"&lt;sha actual del archivo&gt;"</span>
+  <span class="k">"content"</span>: <span class="s">"&lt;contenido nuevo de la página&gt;"</span>,
+  <span class="k">"branch"</span>:  <span class="s">"main"</span>
 }
 
-<span class="ok">→ 200 OK · nuevo commit en el repo · GitHub Pages reconstruye solo</span>
+<span class="ok">→ listo · GitHub Pages se actualiza solo</span>
       </div>
     </div>
   </section>
 
-  <!-- 09 — Stack -->
+  <!-- 12 — Tecnología -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Stack técnico</div>
-      <h2>4 archivos. Vanilla JS. Sin build.</h2>
+      <div class="eyebrow">Tecnología</div>
+      <h2>Simple por dentro. Simple por fuera.</h2>
       <p>
-        Corre 100% en el navegador. Se puede alojar en el mismo GitHub Pages.
+        Es una aplicación liviana que corre completa en el navegador.
+        No hay servidores, no hay bases de datos, no hay instalaciones.
       </p>
       <div class="stack">
         <div class="stack-item">
-          <div class="label">Runtime</div>
-          <div class="value">Navegador (vanilla JS)</div>
+          <div class="label">Dónde corre</div>
+          <div class="value">En el navegador</div>
         </div>
         <div class="stack-item">
-          <div class="label">Módulos</div>
-          <div class="value">ES Modules nativos</div>
-        </div>
-        <div class="stack-item">
-          <div class="label">Backend</div>
-          <div class="value">Ninguno</div>
+          <div class="label">Servidores</div>
+          <div class="value">No necesita</div>
         </div>
         <div class="stack-item">
           <div class="label">Base de datos</div>
-          <div class="value">Ninguna</div>
+          <div class="value">No tiene</div>
         </div>
         <div class="stack-item">
-          <div class="label">API</div>
-          <div class="value">GitHub REST v3</div>
+          <div class="label">Conexión</div>
+          <div class="value">Directo con GitHub</div>
         </div>
         <div class="stack-item">
-          <div class="label">Auth</div>
-          <div class="value">PAT en localStorage</div>
+          <div class="label">Instalación</div>
+          <div class="value">Abrir y usar</div>
         </div>
         <div class="stack-item">
-          <div class="label">Archivos</div>
-          <div class="value">index.html · styles.css · app.js · github.js</div>
-        </div>
-        <div class="stack-item">
-          <div class="label">Build</div>
+          <div class="label">Mantenimiento</div>
           <div class="value">Ninguno</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 10 — Feature: edición visual -->
+  <!-- 13 — Feature: edición visual -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Qué hace hoy · 1 de 4</div>
-      <h2>Edición visual directa.</h2>
+      <div class="eyebrow">Qué puedes hacer · 1 de 4</div>
+      <h2>Editar visualmente.</h2>
       <div class="feat-list">
         <div class="feat-line">
           <div class="icon">↔</div>
           <div class="body">
-            <h3>Mover elementos</h3>
-            <p>Drag con umbral de 3px. Flechas del teclado para ajuste fino (Shift = 10px).</p>
+            <h3>Mover cosas</h3>
+            <p>Haces clic y lo arrastras donde quieras. También con las flechas del teclado.</p>
           </div>
         </div>
         <div class="feat-line">
           <div class="icon">⤡</div>
           <div class="body">
-            <h3>Redimensionar</h3>
-            <p>8 handles por elemento. Cursor correcto por dirección. Mínimo 8×8px.</p>
+            <h3>Cambiar tamaño</h3>
+            <p>Tiras de las esquinas de cualquier elemento y crece o se encoge.</p>
           </div>
         </div>
         <div class="feat-line">
           <div class="icon">✎</div>
           <div class="body">
-            <h3>Editar texto</h3>
-            <p><code>designMode = on</code>. El caret cae donde el usuario hace clic.</p>
+            <h3>Escribir en cualquier parte</h3>
+            <p>Haces doble clic y el cursor aparece ahí. Escribes como en Word.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 11 — Feature: estilos -->
+  <!-- 14 — Feature: estilos -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Qué hace hoy · 2 de 4</div>
-      <h2>Estilos y animaciones.</h2>
+      <div class="eyebrow">Qué puedes hacer · 2 de 4</div>
+      <h2>Cambiar colores y efectos.</h2>
       <div class="feat-list">
         <div class="feat-line">
           <div class="icon">🎨</div>
           <div class="body">
-            <h3>Degradados multi-stop</h3>
-            <p>Lineal, radial y cónico. Stops ilimitados con posición ajustable. 10 presets incluidos.</p>
+            <h3>Degradados completos</h3>
+            <p>Mezclas todos los colores que quieras en un mismo elemento. Arcoíris, atardecer, lo que se te ocurra.</p>
           </div>
         </div>
         <div class="feat-line">
           <div class="icon">🎬</div>
           <div class="body">
-            <h3>Animaciones de entrada</h3>
-            <p>10 presets aplicados por clase + CSS variables. Se reproducen en el sitio final, no en el editor.</p>
+            <h3>Animaciones al aparecer</h3>
+            <p>Eliges cómo entra un elemento cuando se abre la página: apareciendo, deslizándose, girando…</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 12 — Feature: estructura -->
+  <!-- 15 — Feature: estructura -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Qué hace hoy · 3 de 4</div>
-      <h2>Estructura del sitio.</h2>
+      <div class="eyebrow">Qué puedes hacer · 3 de 4</div>
+      <h2>Cambiar la estructura de tu sitio.</h2>
       <div class="feat-list">
         <div class="feat-line">
           <div class="icon">≡</div>
           <div class="body">
-            <h3>Editor de menús</h3>
-            <p>Detecta header y footer. Edita submenús anidados sin tocar HTML.</p>
+            <h3>Editar los menús</h3>
+            <p>Cambias los enlaces de arriba y de abajo sin escribir nada. Soporta submenús.</p>
           </div>
         </div>
         <div class="feat-line">
           <div class="icon">📄</div>
           <div class="body">
-            <h3>Gestión de páginas</h3>
-            <p>Crea páginas nuevas y las añade al menú de todas las demás automáticamente.</p>
+            <h3>Crear páginas nuevas</h3>
+            <p>Con un botón. Se añaden solas al menú y aparecen en todas las demás.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 13 — Feature: UX -->
+  <!-- 16 — Feature: experiencia -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">Qué hace hoy · 4 de 4</div>
-      <h2>Experiencia de uso.</h2>
+      <div class="eyebrow">Qué puedes hacer · 4 de 4</div>
+      <h2>La experiencia de uso.</h2>
       <div class="feat-list">
         <div class="feat-line">
           <div class="icon">↶</div>
           <div class="body">
-            <h3>Undo / Redo</h3>
-            <p>Ctrl+Z y Ctrl+Y. Historial de 60 snapshots del DOM.</p>
+            <h3>Deshacer y rehacer</h3>
+            <p>Si algo no te gusta, Ctrl+Z y vuelve atrás. Como en cualquier programa.</p>
           </div>
         </div>
         <div class="feat-line">
           <div class="icon">⚡</div>
           <div class="body">
-            <h3>Sesión persistente</h3>
-            <p>Se autentica una vez. La próxima visita entra directo al editor.</p>
+            <h3>No hay que loguearse cada vez</h3>
+            <p>Entras una vez y la próxima ya estás adentro. Sin repetir datos.</p>
           </div>
         </div>
         <div class="feat-line">
           <div class="icon">📱</div>
           <div class="body">
-            <h3>Vista responsive</h3>
-            <p>Toggle escritorio / tablet / móvil para previsualizar el layout.</p>
+            <h3>Ver cómo queda en cada pantalla</h3>
+            <p>Cambias entre computadora, tablet y celular con un clic.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 14 — Diferencia -->
+  <!-- 17 — Diferencia -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Diferencia</div>
-      <h2>Edición visual sobre Git, sin CMS.</h2>
+      <h2>Comparado con otros editores.</h2>
       <div class="cmp">
         <div class="cmp-col alt">
-          <div class="cmp-head">CMS Git-based (Tina, Decap, Pages CMS)</div>
+          <div class="cmp-head">Editores tipo CMS</div>
           <ul class="cmp-list">
-            <li><span class="mark no">✕</span> Edición por formularios, no visual</li>
-            <li><span class="mark no">✕</span> Schema por cada campo</li>
-            <li><span class="mark no">✕</span> Requieren OAuth con backend</li>
-            <li><span class="mark no">✕</span> No mueven ni redimensionan</li>
-            <li><span class="mark yes">✓</span> Multi-usuario y flujo editorial</li>
+            <li><span class="mark no">✕</span> Editas por formularios, no viendo la página</li>
+            <li><span class="mark no">✕</span> Hay que configurar cada campo</li>
+            <li><span class="mark no">✕</span> Necesitan servidores o servicios externos</li>
+            <li><span class="mark no">✕</span> No puedes mover ni redimensionar</li>
           </ul>
         </div>
         <div class="cmp-col ours">
           <div class="cmp-head">OpenCanvas Studio</div>
           <ul class="cmp-list">
-            <li><span class="mark yes">✓</span> Edición directa sobre el HTML renderizado</li>
-            <li><span class="mark yes">✓</span> Sin schemas ni configuración</li>
-            <li><span class="mark yes">✓</span> Sin backend: PAT directo a la API</li>
-            <li><span class="mark yes">✓</span> Funciona con cualquier HTML existente</li>
-            <li><span class="mark no">✕</span> Un usuario por sesión</li>
+            <li><span class="mark yes">✓</span> Editas viendo tu web tal cual es</li>
+            <li><span class="mark yes">✓</span> No hay nada que configurar</li>
+            <li><span class="mark yes">✓</span> No necesita servidores</li>
+            <li><span class="mark yes">✓</span> Funciona con cualquier web que ya tengas</li>
           </ul>
         </div>
       </div>
       <p class="muted" style="margin-top: 22px; font-size: var(--small);">
-        No compite con un CMS. Es una capa de edición visual para sitios que no necesitan uno.
+        No reemplaza a un CMS. Es una forma distinta de editar.
       </p>
     </div>
   </section>
 
-  <!-- 15 — Casos de uso -->
+  <!-- 18 — Casos de uso -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Casos de uso</div>
-      <h2>Dónde tiene sentido.</h2>
+      <h2>Cuándo tiene sentido usarlo.</h2>
       <div class="two-col" style="grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));">
         <div class="card">
           <h3 class="accent">Agencias y freelancers</h3>
           <ul class="list">
             <li>Entregar el sitio con editor incluido.</li>
-            <li>Evitar tickets por cambios triviales.</li>
+            <li>Dejar de recibir mensajes por cambios pequeños.</li>
           </ul>
         </div>
         <div class="card">
-          <h3 class="accent">Landings y one-pagers</h3>
+          <h3 class="accent">Landings y sitios de una página</h3>
           <ul class="list">
-            <li>Sin CMS completo para una sola página.</li>
-            <li>Cambios frecuentes de textos y precios.</li>
+            <li>No hace falta un sistema complejo para una sola página.</li>
+            <li>Cambios frecuentes de textos, precios o banners.</li>
           </ul>
         </div>
         <div class="card">
           <h3 class="accent">Portafolios personales</h3>
           <ul class="list">
-            <li>Actualizar proyectos desde el navegador.</li>
-            <li>Sin instalar nada, sin CLI.</li>
+            <li>Actualizar trabajos desde el navegador.</li>
+            <li>Sin depender de nadie para cada cambio.</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 16 — Estado -->
+  <!-- 19 — Estado -->
   <section class="slide">
     <div class="slide-inner">
       <div class="live-badge">
@@ -947,38 +948,38 @@
         DESARROLLO ACTIVO
       </div>
       <div class="eyebrow">Estado del proyecto</div>
-      <h2>Funciona hoy. Sigue evolucionando.</h2>
+      <h2>Ya funciona. Y sigue creciendo.</h2>
       <p style="margin-bottom: 8px;">
-        El roadmap no es fijo. Se alimenta de lo que se reporta.
+        No hay una lista cerrada de lo que viene. Se va construyendo con lo que se reporta.
       </p>
       <div class="flow">
         <div class="flow-step">
           <div class="flow-num">REPORTE</div>
-          <h3>Llega un bug o sugerencia</h3>
-          <p>Del usuario, del repo, de quien sea.</p>
+          <h3>Alguien nota algo</h3>
+          <p>Un error, una idea, algo que falta.</p>
         </div>
         <div class="flow-step">
-          <div class="flow-num">TRIAGE</div>
-          <h3>Entra al radar</h3>
-          <p>Se evalúa y se prioriza. Sin promesas de fecha.</p>
+          <div class="flow-num">EVALUACIÓN</div>
+          <h3>Entra a la lista</h3>
+          <p>Se revisa y se prioriza. Sin fechas prometidas.</p>
         </div>
         <div class="flow-step">
-          <div class="flow-num">RELEASE</div>
-          <h3>Se lanza</h3>
-          <p>Sale al aire cuando está listo.</p>
+          <div class="flow-num">LANZAMIENTO</div>
+          <h3>Sale al aire</h3>
+          <p>Cuando está listo, se publica.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 17 — Cierre -->
+  <!-- 20 — Cierre -->
   <section class="slide final">
     <div class="slide-inner">
       <div class="eyebrow">Probar</div>
       <h1>Está corriendo acá.</h1>
       <p class="lead" style="max-width: 560px;">
-        Abrí la app, pegá un PAT con scope <code>repo</code>
-        y conectá cualquier repo con GitHub Pages activado.
+        Ábrelo en el navegador, dale acceso a tu repositorio
+        y empieza a editar tu web.
       </p>
       <a class="cta" href="https://keyworkspace.github.io/opencanvas-studio/" target="_blank" rel="noopener">
         Abrir OpenCanvas Studio <span class="arrow">→</span>
@@ -990,7 +991,7 @@
 </div>
 
 <div class="counter">
-  <span class="current" id="cur">01</span> / <span id="total">17</span>
+  <span class="current" id="cur">01</span> / <span id="total">20</span>
 </div>
 
 <div class="nav">
