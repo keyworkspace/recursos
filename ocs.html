@@ -17,6 +17,7 @@
     --pink: #ff5fa2;
     --danger: #ff6b6b;
     --success: #4ade80;
+    --warning: #fbbf24;
     --border: rgba(255,255,255,.08);
     --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     --mono: 'SF Mono', ui-monospace, Menlo, Consolas, monospace;
@@ -32,7 +33,6 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* ============ Deck ============ */
   .deck { position: fixed; inset: 0; overflow: hidden; }
 
   .slide {
@@ -63,7 +63,7 @@
     margin: auto;
   }
 
-  /* ============ Progress ============ */
+  /* Progress */
   .progress {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -79,7 +79,7 @@
     box-shadow: 0 0 12px rgba(124,92,252,.5);
   }
 
-  /* ============ Nav ============ */
+  /* Nav */
   .nav {
     position: fixed;
     bottom: 24px;
@@ -148,7 +148,7 @@
     color: #fff;
   }
 
-  /* ============ Typography ============ */
+  /* Typography */
   .eyebrow {
     font-size: 12px;
     font-weight: 600;
@@ -196,11 +196,10 @@
 
   .highlight { color: var(--fg); font-weight: 600; }
   .muted { color: var(--fg-3); }
+  .strike { text-decoration: line-through; color: var(--fg-3); }
 
-  /* ============ Slide 1 — Portada ============ */
-  .title-slide {
-    text-align: left;
-  }
+  /* Portada */
+  .title-slide { text-align: left; }
   .title-slide h1 {
     font-size: clamp(48px, 7vw, 110px);
     margin-bottom: 32px;
@@ -237,7 +236,7 @@
     50% { opacity: .5; transform: scale(.8); }
   }
 
-  /* ============ Slide 2 — Problema ============ */
+  /* Pain list */
   .pain-list {
     display: flex;
     flex-direction: column;
@@ -264,7 +263,7 @@
     margin-top: 2px;
   }
 
-  /* ============ Slide 3 — Comparación ============ */
+  /* Compare (dos columnas) */
   .compare {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -316,7 +315,7 @@
   .compare-card.good .compare-list li { color: var(--fg); }
   .compare-card.good .compare-list li::before { color: var(--primary-2); }
 
-  /* ============ Slide 4 — Steps ============ */
+  /* Steps */
   .steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -341,7 +340,7 @@
   .step h3 { color: var(--fg); }
   .step p { font-size: 14px; }
 
-  /* ============ Slide 5 — Features grid ============ */
+  /* Features grid */
   .features {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -374,7 +373,7 @@
   .feature h3 { font-size: 15px; margin-bottom: 6px; }
   .feature p { font-size: 13px; line-height: 1.5; }
 
-  /* ============ Slide 6 — Degradados ============ */
+  /* Gradient demo */
   .gradient-demo {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -398,14 +397,8 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
   }
-  .pride-text {
-    background: linear-gradient(180deg,
-      #e40303 0%, #e40303 16%,
-      #ff8c00 16%, #ff8c00 32%,
-      #ffed00 32%, #ffed00 48%,
-      #008026 48%, #008026 64%,
-      #24408e 64%, #24408e 80%,
-      #732982 80%, #732982 100%);
+  .sunset-text {
+    background: linear-gradient(135deg, #ff6b6b, #ffa94d, #ffd93d, #c77dff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -423,17 +416,17 @@
     border: 1px solid var(--border);
   }
   .gchip.rainbow { background: linear-gradient(90deg,#f00,#f80,#fe0,#0c4,#08f,#80f,#f0a); }
-  .gchip.pride { background: linear-gradient(180deg,#e40303 16%,#ff8c00 32%,#ffed00 48%,#008026 64%,#24408e 80%,#732982 100%); }
-  .gchip.trans { background: linear-gradient(180deg,#5bcefa 20%,#f5a9b8 20%,#f5a9b8 40%,#fff 40%,#fff 60%,#f5a9b8 60%,#f5a9b8 80%,#5bcefa 80%); }
-  .gchip.bi { background: linear-gradient(180deg,#d60270 40%,#9b4f96 40%,#9b4f96 60%,#0038a8 60%); }
-  .gchip.pan { background: linear-gradient(180deg,#ff218c 33%,#ffd800 33%,#ffd800 66%,#21b1ff 66%); }
-  .gchip.nb { background: linear-gradient(180deg,#fcf434 25%,#fff 25%,#fff 50%,#9c59d1 50%,#9c59d1 75%,#2c2c2c 75%); }
   .gchip.sunset { background: linear-gradient(135deg,#ff6b6b,#ffa94d,#ffd93d,#c77dff); }
   .gchip.ocean { background: linear-gradient(135deg,#0066ff,#00c2ff,#00ffd1); }
   .gchip.fire { background: linear-gradient(135deg,#f00,#f60,#fc0); }
   .gchip.pastel { background: linear-gradient(135deg,#ffb3ba,#ffdfba,#ffffba,#baffc9,#bae1ff); }
+  .gchip.neon { background: linear-gradient(135deg,#ff00e5,#00fff0,#aaff00); }
+  .gchip.aurora { background: linear-gradient(135deg,#00ffa3,#22d3ee,#7c5cfc); }
+  .gchip.forest { background: linear-gradient(135deg,#0a3d2a,#1f8a4c,#8ce99a); }
+  .gchip.galaxy { background: linear-gradient(135deg,#1a0033,#4d0099,#c77dff); }
+  .gchip.mono { background: linear-gradient(135deg,#000,#666,#fff); }
 
-  /* ============ Slide 7 — Before/After ============ */
+  /* Before/After */
   .ba {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -471,7 +464,7 @@
   .ba-body .ok { color: var(--success); }
   .ba-body .no { color: var(--danger); }
 
-  /* ============ Slide 8 — Audiencia ============ */
+  /* Audience */
   .audience {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -493,7 +486,89 @@
   .aud-card h3 { font-size: 16px; margin-bottom: 8px; }
   .aud-card p { font-size: 13px; line-height: 1.5; }
 
-  /* ============ Slide 9 — Cierre ============ */
+  /* Precio */
+  .price-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .price-card {
+    padding: 30px 24px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+  }
+  .price-card.winner {
+    border-color: rgba(124,92,252,.5);
+    background: linear-gradient(180deg, rgba(124,92,252,.08), transparent);
+    box-shadow: 0 20px 60px rgba(124,92,252,.2);
+    transform: scale(1.02);
+  }
+  .price-card.winner::before {
+    content: 'MEJOR OPCIÓN';
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .price-brand {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fg-2);
+    letter-spacing: .02em;
+  }
+  .price-amount {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -.03em;
+    line-height: 1;
+    color: var(--fg);
+  }
+  .price-amount .per {
+    font-size: 14px;
+    color: var(--fg-3);
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .price-card.winner .price-amount { color: var(--primary-2); }
+  .price-note {
+    font-size: 13px;
+    color: var(--fg-3);
+    line-height: 1.5;
+  }
+  .price-feats {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+  .price-feats li {
+    font-size: 13px;
+    color: var(--fg-2);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+  .price-feats .tick { color: var(--success); flex-shrink: 0; }
+  .price-feats .cross { color: var(--danger); flex-shrink: 0; }
+
+  /* Cierre */
   .final-slide { text-align: center; }
   .final-slide .slide-inner {
     display: flex;
@@ -513,15 +588,16 @@
     display: inline-flex;
     flex-direction: column;
     gap: 14px;
-    padding: 28px 44px;
+    padding: 32px 44px;
     background: linear-gradient(180deg, rgba(124,92,252,.1), rgba(34,211,238,.04));
     border: 1px solid rgba(124,92,252,.3);
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(124,92,252,.2);
+    align-items: center;
   }
   .cta-url {
     font-family: var(--mono);
-    font-size: 18px;
+    font-size: 16px;
     color: var(--fg);
     letter-spacing: .02em;
     padding: 12px 20px;
@@ -535,7 +611,6 @@
     color: var(--fg-3);
     margin: 0;
   }
-
   .final-tagline {
     font-size: 15px;
     color: var(--fg-3);
@@ -543,7 +618,46 @@
     font-style: italic;
   }
 
-  /* ============ Hint ============ */
+  /* CTA button */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    letter-spacing: -.01em;
+    box-shadow: 0 12px 40px rgba(124,92,252,.4),
+                0 4px 12px rgba(34,211,238,.2);
+    transition: all .25s cubic-bezier(.4,0,.2,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,.25), transparent 70%);
+    transform: translateX(-100%);
+    transition: transform .6s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(124,92,252,.55),
+                0 6px 16px rgba(34,211,238,.3);
+  }
+  .cta-btn:hover::after { transform: translateX(100%); }
+  .cta-btn .arrow {
+    transition: transform .25s;
+    font-size: 18px;
+  }
+  .cta-btn:hover .arrow { transform: translateX(4px); }
+
+  /* Hint */
   .hint {
     position: fixed;
     bottom: 32px;
@@ -565,7 +679,7 @@
     margin: 0 2px;
   }
 
-  /* ============ Decorative ============ */
+  /* Decorative */
   .glow {
     position: fixed;
     border-radius: 50%;
@@ -590,10 +704,11 @@
   @media (max-width: 900px) {
     .slide { padding: 60px 28px; }
     .compare, .ba, .gradient-demo { grid-template-columns: 1fr; gap: 20px; }
-    .steps, .features, .audience { grid-template-columns: 1fr; }
+    .steps, .features, .audience, .price-grid { grid-template-columns: 1fr; }
     .gradient-chips { grid-template-columns: repeat(3, 1fr); }
     .brand-corner { display: none; }
     .hint { display: none; }
+    .price-card.winner { transform: none; }
   }
 </style>
 </head>
@@ -616,15 +731,15 @@
     <div class="slide-inner">
       <div class="pill"><span class="dot"></span> Para sitios en GitHub Pages</div>
       <h1>
-        Deja de <span class="gradient-text">pelearte con código</span><br>
-        para editar tu web.
+        Editar tu web<br>
+        nunca debería costarte<br>
+        <span class="gradient-text">una tarde entera.</span>
       </h1>
       <p class="sub">
-        Mueve elementos con el mouse. Cambia textos con un clic.
-        Aplica degradados arcoíris sin escribir CSS.
-        Guarda y ya está en producción.
+        Mueve, redimensiona, escribe y guarda tu sitio como si fuera un programa de diseño.
+        Sin código. Sin WordPress. Sin pagar suscripciones.
       </p>
-      <p class="big muted">Esto no es un sueño. Es OpenCanvas Studio.</p>
+      <p class="big muted">OpenCanvas Studio. Un lienzo visual sobre tu repositorio de GitHub.</p>
     </div>
   </section>
 
@@ -636,48 +751,160 @@
       <div class="pain-list">
         <div class="pain-item"><span class="ico">✕</span> Abres VS Code, buscas el archivo, encuentras la línea, cambias una palabra, y rezas para no romper nada.</div>
         <div class="pain-item"><span class="ico">✕</span> Quieres mover un botón 2 centímetros y acabas peleándote con CSS hasta las 2 de la mañana.</div>
-        <div class="pain-item"><span class="ico">✕</span> Necesitas un submenú y no sabes ni por dónde empezar.</div>
-        <div class="pain-item"><span class="ico">✕</span> Copias un degradado arcoíris de un blog que no entiendes del todo.</div>
-        <div class="pain-item"><span class="ico">✕</span> Se te olvida una coma, haces push, y tu web se queda en blanco sin saber por qué.</div>
+        <div class="pain-item"><span class="ico">✕</span> Instalas WordPress y descubres que el tema que te gusta cuesta $79 al año, el plugin de formularios $49 más, y el SSL $99 más.</div>
+        <div class="pain-item"><span class="ico">✕</span> Contratas un hosting para WordPress porque "es más fácil" y acabas pagando $12/mes para siempre.</div>
+        <div class="pain-item"><span class="ico">✕</span> Se te olvida una coma, haces push, y tu web entera se queda en blanco sin saber por qué.</div>
+        <div class="pain-item"><span class="ico">✕</span> Cada vez que alguien te pide cambiar una palabra, pierdes 15 minutos de tu vida.</div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 3. LA SOLUCIÓN ============ -->
+  <!-- ============ 3. WORDPRESS vs OPENCANVAS ============ -->
   <section class="slide">
     <div class="slide-inner">
-      <div class="eyebrow">La solución</div>
-      <h2>Un <span class="gradient-text">lienzo visual</span> sobre tu GitHub Pages.</h2>
-      <p class="big">
-        Conectas tu repositorio una vez. A partir de ahí, editas tu sitio como si fuera un programa de diseño:
-        arrastras, redimensionas, escribes, previsualizas. Y cuando pulsas guardar, se sube solo.
-      </p>
-      <div class="compare" style="margin-top: 48px;">
+      <div class="eyebrow">La comparación que duele</div>
+      <h2>WordPress te cobra por todo.<br><span class="gradient-text">OpenCanvas, no.</span></h2>
+      <div class="compare" style="margin-top: 40px;">
         <div class="compare-card bad">
-          <div class="compare-head">Antes · A mano</div>
+          <div class="compare-head">WordPress · Lo que ya sabes</div>
           <ul class="compare-list">
-            <li>3 minutos por cambio pequeño</li>
-            <li>20 minutos si algo se rompe</li>
-            <li>Cero previsualización real</li>
-            <li>Miedo a romper algo</li>
-            <li>Actualizas la web 1 vez al mes</li>
+            <li>Hosting: $5–$25 al mes, para siempre</li>
+            <li>Temas premium: $49–$199 por año</li>
+            <li>Plugins de formularios, SEO, caché: $30–$300 al año</li>
+            <li>Plugins de seguridad para evitar hackeos: $99 al año</li>
+            <li>Mantenimiento, actualizaciones y roturas: horas de tu vida</li>
+            <li>Métricas y analítica: otro plugin más, otra suscripción</li>
+            <li>Backups: otro plugin más, otra suscripción</li>
+            <li>Rendimiento lento si no optimizas todo</li>
+            <li>Dependes de un ecosistema que puede cambiar cuando quiera</li>
           </ul>
         </div>
         <div class="compare-card good">
-          <div class="compare-head">Después · OpenCanvas</div>
+          <div class="compare-head">OpenCanvas Studio · Lo que descubres</div>
           <ul class="compare-list">
-            <li>15 segundos por cambio</li>
-            <li>Ctrl+Z si te arrepientes</li>
-            <li>Ves el resultado en vivo</li>
-            <li>Imposible romper algo sin querer</li>
-            <li>Actualizas la web cuando quieras</li>
+            <li>Hosting: $0 — GitHub Pages es gratis para siempre</li>
+            <li>Temas: tu propio diseño, sin pagar por plantillas</li>
+            <li>Editor visual completo incluido</li>
+            <li>Sin plugins, sin mantenimiento, sin actualizaciones</li>
+            <li>Sin vulnerabilidades. Es HTML estático. No hay nada que hackear.</li>
+            <li>Sin base de datos. Sin PHP. Sin sorpresas.</li>
+            <li>Cargas instantáneas. Sin caché que configurar.</li>
+            <li>Tu contenido vive en tu GitHub, no en el servidor de nadie</li>
+            <li>Editas como un diseñador, no como un administrador de sistemas</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 4. CÓMO SE SIENTE ============ -->
+  <!-- ============ 4. EL PRECIO REAL ============ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">El coste real</div>
+      <h2>Cuánto te cuesta <span class="gradient-text">de verdad</span> tener una web.</h2>
+      <div class="price-grid">
+        <div class="price-card">
+          <div class="price-brand">WordPress clásico</div>
+          <div class="price-amount">$290<span class="per"> / año</span></div>
+          <div class="price-note">Hosting + tema + plugins esenciales. Y todavía tienes que aprender a usarlo.</div>
+          <ul class="price-feats">
+            <li><span class="cross">✕</span> Pagas cada año, para siempre</li>
+            <li><span class="cross">✕</span> Necesitas plugins de seguridad</li>
+            <li><span class="cross">✕</span> Si se cae, se cae todo</li>
+            <li><span class="tick">✓</span> Editor visual incluido</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="price-brand">Squarespace / Wix / Webflow</div>
+          <div class="price-amount">$180–$500<span class="per"> / año</span></div>
+          <div class="price-note">Bonitos, fáciles… y completamente cerrados. Tu contenido vive en su nube, no en la tuya.</div>
+          <ul class="price-feats">
+            <li><span class="cross">✕</span> No puedes exportar tu web sin pagar</li>
+            <li><span class="cross">✕</span> Sube el precio cuando quieran</li>
+            <li><span class="cross">✕</span> Tus datos no son tuyos</li>
+            <li><span class="tick">✓</span> Editor visual incluido</li>
+          </ul>
+        </div>
+        <div class="price-card winner">
+          <div class="price-brand">OpenCanvas Studio</div>
+          <div class="price-amount">$0<span class="per"> para siempre</span></div>
+          <div class="price-note">Edición visual completa. Tu contenido en GitHub. Tu web es tuya. Fin.</div>
+          <ul class="price-feats">
+            <li><span class="tick">✓</span> Sin suscripciones, nunca</li>
+            <li><span class="tick">✓</span> Sin plugins, sin mantenimiento</li>
+            <li><span class="tick">✓</span> Sin vulnerabilidades: es estático</li>
+            <li><span class="tick">✓</span> Editor visual completo incluido</li>
+            <li><span class="tick">✓</span> Código abierto: si un día quieres mejorar algo, puedes</li>
+          </ul>
+        </div>
+      </div>
+      <p class="huge" style="margin-top: 48px; max-width: 900px;">
+        En 5 años, WordPress te habrá costado más de <span class="gradient-text">$1,450</span>.<br>
+        OpenCanvas Studio: <span class="gradient-text">$0</span>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 5. LO QUE OTRAS TOOLS NO HACEN ============ -->
+  <section class="slide">
+    <div class="slide-inner">
+      <div class="eyebrow">Lo que ninguna otra hace</div>
+      <h2>Editor visual real<br><span class="gradient-text">sobre tu GitHub.</span></h2>
+      <p class="big" style="margin-bottom: 20px;">
+        Otras herramientas te obligan a elegir: o es visual, o vive en Git.
+        OpenCanvas Studio te da las dos cosas.
+      </p>
+      <div class="features">
+        <div class="feature">
+          <div class="ico">✥</div>
+          <h3>Mover con el mouse</h3>
+          <p>Arrastras cualquier elemento. Tiras de las esquinas y cambia de tamaño. Nada de números.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">✎</div>
+          <h3>Editar texto como en Word</h3>
+          <p>Doble clic, cursor donde quieras, escribes. Ni selects todo, ni reemplazas nada.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🎨</div>
+          <h3>Degradados infinitos</h3>
+          <p>Stops ilimitados con posición exacta. Ni dos colores ni "el preset más cercano".</p>
+        </div>
+        <div class="feature">
+          <div class="ico">≡</div>
+          <h3>Editor de menús con submenús</h3>
+          <p>Detecta header y footer. Submenús anidados ilimitados. Ningún plugin de WordPress te da esto en un panel.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">📄</div>
+          <h3>Crear páginas en 30 segundos</h3>
+          <p>Pulsas "+ Página", pones el título, y se añade sola al menú de todas las demás.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">↶</div>
+          <h3>Undo / Redo de 60 pasos</h3>
+          <p>Ctrl+Z y Ctrl+Y, siempre. Como en cualquier programa serio. Sin límites artificiales.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">🎬</div>
+          <h3>Animaciones de entrada</h3>
+          <p>10 efectos listos. Previsualiza sin recargar. Guarda y ya están en producción.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">📱</div>
+          <h3>Vista responsive real</h3>
+          <p>Cambia entre escritorio, tablet y móvil para ver cómo queda en cada uno.</p>
+        </div>
+        <div class="feature">
+          <div class="ico">⚡</div>
+          <h3>Sesión persistente</h3>
+          <p>Entras una vez. La próxima vez ya estás dentro. Cero fricción. Cero tokens repitiendo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 6. CÓMO SE SIENTE ============ -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">La experiencia</div>
@@ -686,17 +913,17 @@
         <div class="step">
           <div class="num">01 / ABRIR</div>
           <h3>Entras a la herramienta</h3>
-          <p>Pegas tu token una vez. Se guarda. No lo vuelves a pedir nunca.</p>
+          <p>Pegas tu token una vez. Se guarda. No lo vuelves a pedir nunca. Ni siquiera si cierras el navegador.</p>
         </div>
         <div class="step">
           <div class="num">02 / TOCAR</div>
           <h3>Haces clic en lo que quieras</h3>
-          <p>Se ilumina. Lo arrastras. Tiras de las esquinas. El cursor cae dentro del texto.</p>
+          <p>Se ilumina. Lo arrastras. Tiras de las esquinas. Doble clic y el cursor cae dentro del texto.</p>
         </div>
         <div class="step">
           <div class="num">03 / GUARDAR</div>
           <h3>Pulsas Guardar</h3>
-          <p>En 30 segundos tu web está actualizada en internet. Sin terminal. Sin commit.</p>
+          <p>En 30 segundos tu web está actualizada en internet. Sin terminal. Sin commit. Sin esperas eternas.</p>
         </div>
       </div>
       <p class="huge" style="margin-top: 48px; max-width: 800px;">
@@ -705,62 +932,7 @@
     </div>
   </section>
 
-  <!-- ============ 5. FEATURES ============ -->
-  <section class="slide">
-    <div class="slide-inner">
-      <div class="eyebrow">Todo lo que incluye</div>
-      <h2>Las herramientas que <span class="gradient-text">ya deberían existir.</span></h2>
-      <div class="features">
-        <div class="feature">
-          <div class="ico">✥</div>
-          <h3>Mover y redimensionar</h3>
-          <p>Arrastra cualquier elemento. Tira de las esquinas para cambiar tamaño.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">✎</div>
-          <h3>Edición de texto natural</h3>
-          <p>Doble clic, escribes donde quieras. Como en Word. Sin reemplazar nada.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">🎨</div>
-          <h3>Degradados infinitos</h3>
-          <p>Stops ilimitados. 10 presets: arcoíris, pride, trans, bi, pan, y más.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">≡</div>
-          <h3>Editor de menús</h3>
-          <p>Detecta el header y el footer. Submenús anidados sin tocar HTML.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">📄</div>
-          <h3>Gestor de páginas</h3>
-          <p>Crea, duplica y elimina páginas. Se añaden solas al menú.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">↶</div>
-          <h3>Undo / Redo</h3>
-          <p>Ctrl+Z y Ctrl+Y con 60 pasos de historial. Como cualquier programa serio.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">🎬</div>
-          <h3>Animaciones</h3>
-          <p>10 animaciones de entrada listas para usar. Previsualiza sin recargar.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">📱</div>
-          <h3>Vista responsive</h3>
-          <p>Cambia entre escritorio, tablet y móvil para ver cómo queda.</p>
-        </div>
-        <div class="feature">
-          <div class="ico">⚡</div>
-          <h3>Sesión persistente</h3>
-          <p>Entras una vez. La próxima vez ya estás dentro. Sin fricción.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ 6. DEGRADADOS ============ -->
+  <!-- ============ 7. DEGRADADOS ============ -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">El detalle que importa</div>
@@ -768,7 +940,7 @@
       <div class="gradient-demo">
         <div>
           <div class="gradient-title rainbow-text">ARCO<br>ÍRIS</div>
-          <div class="gradient-title pride-text">PRIDE</div>
+          <div class="gradient-title sunset-text">SUNSET</div>
         </div>
         <div>
           <p class="big" style="margin-bottom: 24px;">
@@ -776,34 +948,34 @@
             Cada uno con su color y su posición exacta.
           </p>
           <p style="margin-bottom: 24px;">
-            Con un clic aplicas una bandera completa a un título, un botón o un fondo.
-            Con otro, la conviertes en texto degradado sin escribir una línea de CSS.
+            Aplicas un degradado a un título, un botón o un fondo con un clic.
+            O lo conviertes en texto degradado sin escribir una línea de CSS.
           </p>
           <div class="gradient-chips">
             <div class="gchip rainbow" title="Arcoíris"></div>
-            <div class="gchip pride" title="Pride"></div>
-            <div class="gchip trans" title="Trans"></div>
-            <div class="gchip bi" title="Bi"></div>
-            <div class="gchip pan" title="Pan"></div>
-            <div class="gchip nb" title="No binario"></div>
             <div class="gchip sunset" title="Sunset"></div>
             <div class="gchip ocean" title="Océano"></div>
             <div class="gchip fire" title="Fuego"></div>
             <div class="gchip pastel" title="Pastel"></div>
+            <div class="gchip neon" title="Neón"></div>
+            <div class="gchip aurora" title="Aurora"></div>
+            <div class="gchip forest" title="Bosque"></div>
+            <div class="gchip galaxy" title="Galaxia"></div>
+            <div class="gchip mono" title="Monocromo"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 7. BEFORE/AFTER ============ -->
+  <!-- ============ 8. BEFORE / AFTER ============ -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Comparación directa</div>
       <h2>Lo que hacías<br>vs. lo que harás.</h2>
       <div class="ba">
         <div class="ba-col bad">
-          <div class="ba-label">A mano · 8 pasos</div>
+          <div class="ba-label">A mano · 8 pasos · 15 minutos</div>
           <div class="ba-body">
             <span class="cmt">// 1. Abrir VS Code</span><br>
             <span class="cmt">// 2. Buscar el archivo</span><br>
@@ -819,7 +991,7 @@
           </div>
         </div>
         <div class="ba-col good">
-          <div class="ba-label">OpenCanvas · 3 pasos</div>
+          <div class="ba-label">OpenCanvas · 3 pasos · 15 segundos</div>
           <div class="ba-body">
             <span class="ok">→</span> <span class="kw">Clic</span> en el elemento<br><br>
             <span class="ok">→</span> <span class="kw">Editar</span> arrastrando / escribiendo<br><br>
@@ -827,14 +999,15 @@
             <br>
             <span class="ok">✓</span> Web actualizada.<br>
             <span class="ok">✓</span> Cero estrés.<br>
-            <span class="ok">✓</span> Cero código.
+            <span class="ok">✓</span> Cero código.<br>
+            <span class="ok">✓</span> Cero suscripciones.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ 8. PARA QUIÉN ============ -->
+  <!-- ============ 9. AUDIENCIA ============ -->
   <section class="slide">
     <div class="slide-inner">
       <div class="eyebrow">Para quién es</div>
@@ -856,9 +1029,9 @@
           <p>Publica cambios cada semana sin fricción ni esperas.</p>
         </div>
         <div class="aud-card">
-          <span class="aud-emoji">🏳️‍🌈</span>
-          <h3>Colectivos y activismos</h3>
-          <p>Pon tu bandera en el header en menos de 5 minutos.</p>
+          <span class="aud-emoji">🚀</span>
+          <h3>Startups y freelancers</h3>
+          <p>Una landing que puedes actualizar tú mismo en minutos, sin dev ni WordPress.</p>
         </div>
         <div class="aud-card">
           <span class="aud-emoji">💻</span>
@@ -874,7 +1047,7 @@
     </div>
   </section>
 
-  <!-- ============ 9. CIERRE ============ -->
+  <!-- ============ 10. CIERRE ============ -->
   <section class="slide final-slide">
     <div class="slide-inner">
       <div class="eyebrow" style="text-align: center;">Empieza ahora</div>
@@ -882,17 +1055,25 @@
         Tu web <span class="gradient-text">te está esperando.</span>
       </h1>
       <p class="big">
-        No es que lo quieras. Es que una vez lo pruebas,
-        <br>ya no puedes vivir sin él.
+        Edita como diseñador. Guarda como desarrollador.<br>
+        Paga como nadie: cero, para siempre.
       </p>
       <div class="cta-box">
         <div class="cta-url">
-          tu-usuario.github.io/<span class="acc">opencanvas-studio</span>
+          keyworkspace.github.io/<span class="acc">opencanvas-studio</span>
         </div>
+        <a
+          class="cta-btn"
+          href="https://keyworkspace.github.io/opencanvas-studio/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Abrir OpenCanvas Studio <span class="arrow">→</span>
+        </a>
         <p class="cta-note">Pega tu token · Edita · Guarda · Sigue con tu vida.</p>
       </div>
       <p class="final-tagline">
-        OpenCanvas Studio · Diseña tu sitio. Sin código. Sin excusas.
+        OpenCanvas Studio · Diseña tu sitio. Sin código. Sin suscripciones. Sin excusas.
       </p>
     </div>
   </section>
@@ -904,7 +1085,7 @@
 </div>
 
 <div class="slide-counter">
-  <span class="current" id="cur">01</span> / <span id="total">09</span>
+  <span class="current" id="cur">01</span> / <span id="total">10</span>
 </div>
 
 <div class="nav">
